@@ -24,5 +24,3 @@ The observations are as follows:
 Apply the SMC algorithm to the SSM, and calculate the mean of position at each iteration, we can obtain the following results:
 
 ![](res.png)
-
-s
