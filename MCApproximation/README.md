@@ -10,7 +10,7 @@
 
 总结起来，就是先从后验分布中产生样本，然后用样本的量近似总体的量。
 
-# For Integration
+## For Integration
 
 为了计算积分
 ![](https://latex.codecogs.com/gif.latex?I%20%3D%20%5Cint%20_D%20g%28%5Cmathbf%20x%29d%5Cmathbf%20x)
