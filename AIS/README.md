@@ -2,7 +2,7 @@
 
 ## One Simple Way
 
-1. start with a trial density, say $g_0(x) = t_\alpha (x; \mu_0,\Sigma_0)$
+1. start with a trial density, say $$g_0(x) = t_\alpha (x; \mu_0,\Sigma_0)$$
 2. with weighted Monte Carlo samples, estimate the parameters, mean and covariate matrix, and construct new trial density, say $g_1(x) = t_\alpha (x; \mu_1,\Sigma_1)$
 3. construct a certain measure of discrepancy between the trial distribution and the target distribution, such as the coefficient of variation of importance weights, does not improve any more.
 
