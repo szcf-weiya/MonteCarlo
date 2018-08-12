@@ -9,13 +9,13 @@
 $$
 r=\frac{p(\theta^*\mid y)}{p(\theta^{(s)}\mid y)}=\frac{p(y\mid\theta^*)p(\theta^*)}{p(y\mid\theta^{(s)})p(\theta^{(s)})}
 $$
-3. $$theta^{(s+1)}=\theta^*\; \mathrm{w.p.}\; \mathrm{min}(r,1)$$, and $$theta^{(s+1)}=\theta^{(s)}\; \mathrm{w.p.}\; 1-\mathrm{min}(r,1)$$
+3. $$\theta^{(s+1)}=\theta^*\; \mathrm{w.p.}\; \mathrm{min}(r,1)$$, and $$\theta^{(s+1)}=\theta^{(s)}\; \mathrm{w.p.}\; 1-\mathrm{min}(r,1)$$
 
 In practice, the first $$B$$ iterations are called "burn-in" period, which should be discarded.
 
 ## Example: Normal distribution with known variance
 
-Let $$\theta\sim N(\mu,\tau^2),\;\{y_1,\ldots,y_n\mid \theta\}\sim i.i.d. N(\theta,\sigma^2)$$, then the posterior distribution of $$\theta$$ is $N(\mu_n,\tau_n^2)$.
+Let $$\theta\sim N(\mu,\tau^2),\;\{y_1,\ldots,y_n\mid \theta\}\sim i.i.d. N(\theta,\sigma^2)$$, then the posterior distribution of $$\theta$$ is $$N(\mu_n,\tau_n^2)$$.
 
 The simulation is as follows:
 
