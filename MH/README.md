@@ -1,6 +1,6 @@
 # Metropolis Algorithm
 
-1. Monte Carlo method is sufficient for conjugate prior distribution and Gibbs sampler also can handle semiconjugate prior distribution, but when the conjugate or semiconjugate distribution is unavailable, we need the Metropolis-Hastings algorithm which is a generic method of approximating the posterior distribution.
+**Monte Carlo method** is sufficient for conjugate prior distribution and **Gibbs sampler** also can handle semiconjugate prior distribution, but when the conjugate or semiconjugate distribution is unavailable, we need the **Metropolis-Hastings algorithm** which is a generic method of approximating the posterior distribution.
 
 ## Procedure
 
@@ -9,7 +9,7 @@
 $$
 r=\frac{p(\theta^*\mid y)}{p(\theta^{(s)}\mid y)}=\frac{p(y\mid\theta^*)p(\theta^*)}{p(y\mid\theta^{(s)})p(\theta^{(s)})}
 $$
-3. $$theta^{(s+1)=\theta^*\; \mathrm{w.p.}\; \mathrm{min}(r,1)$$, and $$theta^{(s+1)=\theta^{(s)}\; \mathrm{w.p.}\; 1-\mathrm{min}(r,1)$$
+3. $$theta^{(s+1)}=\theta^*\; \mathrm{w.p.}\; \mathrm{min}(r,1)$$, and $$theta^{(s+1)}=\theta^{(s)}\; \mathrm{w.p.}\; 1-\mathrm{min}(r,1)$$
 
 In practice, the first $$B$$ iterations are called "burn-in" period, which should be discarded.
 
