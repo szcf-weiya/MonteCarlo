@@ -3,6 +3,7 @@
 * [AIS](AIS/README.md)
 * [MC Approximation](MCApproximation/README.md)
 * [MCMC](MCMC/README.md)
-* [MH Algorithm](MH/README.md)
+* [Metropolis](Metropolis/README.md)
+* [Metropolis-Hastings](MH/README.md)
 * [SMCTC](SMCTC/README.md)
 * [References](References/README.md)
