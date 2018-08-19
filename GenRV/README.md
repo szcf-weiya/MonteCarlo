@@ -168,4 +168,7 @@ end
 # ans: 5 7 16 7 10 .......
 ```
 
+## ARS Algorithm
+
+![](ars.png)
 
