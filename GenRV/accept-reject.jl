@@ -1,4 +1,4 @@
-## Julia program for Accept-Reject Method
+## Julia program for (Envelope) Accept-Reject Method
 ## author: weiya <szcfweiya@gmail.com>
 ## date: 2018-08-19
 
@@ -9,7 +9,21 @@ function AccRej(f::Function, M)
         u = rand()
         cutpoint = f(x)/(M*g(x))
         if u <= cutpoint
-            return([x, f(x)])
+            return(x)
+        end
+    end
+end
+
+function EnvAccRej(f::function, M, gl::function)
+    while true
+        x = randn() # still assume gm is N(0,1)
+        u = rand()
+        cutpoint1 = gl(x)/(M*g(x))
+        cutpoint2 = f(x)/(M*g(x))
+        if u <= cutpoint1
+            return(x)
+        elseif u <= cutpoint2
+            return(x)
         end
     end
 end
@@ -26,12 +40,8 @@ end
 
 ## example
 N = 500;
-data = ones(N, 2);
+data = ones(N);
 for i = 1:500
-    data[i,:] = AccRej(f, sqrt(2*pi)*5)
+    data[i] = AccRej(f, sqrt(2*pi)*5)
 end
-
-## plot
-#data1 = sortslices(data, dims = 1)
-#plot(data1[:,1],data1[:,2])
 

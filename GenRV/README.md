@@ -69,6 +69,28 @@ for i = 1:500
 end
 ```
 
+## Envelope Accept-Reject
+
+![](lemma-2-21.png)
+
+It is easy to write the Julia code:
+
+```julia
+function EnvAccRej(f::function, M, gl::function)
+    while true
+        x = randn() # still assume gm is N(0,1)
+        u = rand()
+        cutpoint1 = gl(x)/(M*g(x))
+        cutpoint2 = f(x)/(M*g(x))
+        if u <= cutpoint1
+            return(x)
+        elseif u <= cutpoint2
+            return(x)
+        end
+    end
+end
+```
+
 
 
 
