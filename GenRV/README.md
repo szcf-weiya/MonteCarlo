@@ -91,6 +91,54 @@ function EnvAccRej(f::function, M, gl::function)
 end
 ```
 
+## Atkinson's Poisson Simulation
+
+![](ex-2-23.png)
+
+It is necessary to note that the parameters in the algorithm are not same with those in the density function. In other words, the corresponding density function of the algorithm should be
+
+$$
+f(x) = \beta \frac{\exp(\alpha-\beta x)}{[1+\exp(\alpha-\beta x)]^2}.
+$$
+
+The following Julia code can generate the poisson random variable with respect to $$\lambda$$.
+
+```julia
+function AtkinsonPois(lambda)
+    # parameters
+    beta = pi/sqrt(3*lambda)
+    alpha = lambda*beta
+    c = 0.767 - 3.36/lambda
+    k = log(c) - lambda - log(beta)
+    # step 1: propose new x
+    u1 = rand()
+    while true
+        global x
+        x = (alpha - log((1-u1)/u1))/beta
+        x > -0.5 && break
+    end
+    while true
+        # step 2: transform to N 
+        N = floor(Int, x)
+        u2 = rand()
+        # step 3: accept or not
+        lhs = alpha - beta*x + log(u2/(1+exp(alpha-beta*x))^2)
+        rhs = k + N*log(lambda) - log(factorial(lambda))
+        if lhs <= rhs
+            return(N)
+        end
+    end
+end
+
+## example
+N = 100;
+res = ones(Int, N);
+for i = 1:N
+    res[i] = AtkinsonPois(10)
+end
+# ans: 8 9 13 10 12 .......
+```
+
 
 
 
