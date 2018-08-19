@@ -139,6 +139,33 @@ end
 # ans: 8 9 13 10 12 .......
 ```
 
+As mentioned in the above exercise, another poisson generation method can be derived from the following exercise.
 
+![](ex-2-9.png)
+
+We can write the following Julia code to implement this generation procedure.
+
+```julia
+function SimplePois(lambda)
+    s = 0
+    k = 0
+    while true
+        u = rand()
+        x = -log(u)/lambda
+        s = s + x
+        if s > 1
+            return(k)
+        end
+        k = k + 1
+    end
+end
+
+## example for simple poisson
+res2 = ones(Int, N);
+for i = 1:N 
+    res2[i] = SimplePois(10)
+end
+# ans: 5 7 16 7 10 .......
+```
 
 
