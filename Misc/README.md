@@ -66,3 +66,31 @@ for i in eachindex(g)
     println(g[i])
 end
 ```
+
+## Tree ordering
+
+In [Robert and Casella (2005)](http://cds.cern.ch/record/1187871), there is another exercise about isotonic regression, which is the continuation of the previous section.
+
+![](ex-1-19.png)
+
+The following Julia program can be used to solve this exercise.
+
+```julia
+function treeordering(f::Array, w::Array)
+    n = size(f, 1)
+    lag = diff(f)
+    # if f is isotonic
+    if all(i -> i >= 0, lag)
+        return(f)
+    end
+    for j = 1:n
+        Aj = sum(f[1:j].*w[1:j])/sum(w[1:j])
+        if Aj < f[j+1]
+            return([Aj*ones(j); f[(j+1):end]])
+        end
+    end
+end
+
+## example
+treeordering([18,17,12,21,16], [1,1,3,3,1])
+```
