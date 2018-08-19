@@ -6,4 +6,5 @@
 * [Metropolis](Metropolis/README.md)
 * [Metropolis-Hastings](MH/README.md)
 * [SMCTC](SMCTC/README.md)
+* [Misc](Misc/README.md)
 * [References](References/README.md)
