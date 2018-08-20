@@ -4,6 +4,7 @@
 * [Generate R.V.](GenRV/README.md)
 * [MC Approximation](MCApproximation/README.md)
 * [MC Integration](MCIntegration/README.md)
+* [MC Optimization](MCOptim/README.md)
 * [MCMC](MCMC/README.md)
 * [Metropolis](Metropolis/README.md)
 * [Metropolis-Hastings](MH/README.md)
