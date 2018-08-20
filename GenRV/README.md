@@ -202,7 +202,7 @@ $$
 and 
 
 $$
-\int_{z_{j}}^{z_{j+1}}\exp(h_+(x))dx = \exp_{h(y_{j+1})}\cdot \frac{1}{h'(y_{j+1})}\exp((y-y_{j+1})h'(y_{j+1}))\mid_{z_j}^{z_{j+1}},\; j=1,\ldots,k-1
+\int_{z_{j}}^{z_{j+1}}\exp(h_+(x))dx = \exp({h(y_{j+1})})\cdot \frac{1}{h'(y_{j+1})}\exp((y-y_{j+1})h'(y_{j+1}))\mid_{z_j}^{z_{j+1}},\; j=1,\ldots,k-1
 $$
 
 Then use the inverse of $$G_+(y)$$ to sample random variable whose density function is $$g_+(x)$$. So we can use the following Julia program to sample from $$g_+(x)$$.
