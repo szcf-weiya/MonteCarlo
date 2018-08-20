@@ -318,3 +318,7 @@ for i = 1:N
     res[i] = ars([-1.8,-1.1,-0.5,-0.2])
 end
 ```
+
+Based on the ARS algorithm, we can also get the Supplemental ARS algorithm:
+
+![](s-ars.png)
