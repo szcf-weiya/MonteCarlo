@@ -44,4 +44,14 @@ println(rgamma())
 
 where [`func_gamma.jl`](func_gamma.jl) is to calculate gamma function via [Lanczos Approximation](https://mrob.com/pub/ries/lanczos-gamma.html) because there is not gamma function in Julia.
 
+If $$\beta=1$$, we can do some further calculations, 
+
+![](gamma_beta_1.jpg)
+
+and would get more simpler expression,
+
+![](gamma_accept_reject.png)
+
+
+
 
