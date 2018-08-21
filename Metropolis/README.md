@@ -1,6 +1,6 @@
 # Metropolis Algorithm
 
-**Monte Carlo method** is sufficient for conjugate prior distribution and **Gibbs sampler** also can handle semiconjugate prior distribution, but when the conjugate or semiconjugate distribution is unavailable, we need the **Metropolis-Hastings algorithm** which is a generic method of approximating the posterior distribution.
+**Monte Carlo method** is sufficient for conjugate prior distribution which means that we can derive the explicit form of posterior distribution, and **Gibbs sampler** also can handle semiconjugate prior distribution, but when the conjugate or semiconjugate distribution is unavailable, we need the **Metropolis-Hastings algorithm** which is a generic method of approximating the posterior distribution.
 
 ## Procedure
 
