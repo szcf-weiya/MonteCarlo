@@ -2,6 +2,7 @@
 
 * [AIS](AIS/README.md)
 * [Generate R.V.](GenRV/README.md)
+    * [Special Distribution](GenRV/special.md)
 * [MC Approximation](MCApproximation/README.md)
 * [MC Integration](MCIntegration/README.md)
 * [MC Optimization](MCOptim/README.md)

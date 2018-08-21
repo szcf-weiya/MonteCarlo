@@ -26,3 +26,18 @@ No need to require the acceptance ratio to be symmetric.
     3. set $$u^{(s+1)}$$ to $$u^*$$ w.p. $$\mathrm{min}(1,r)$$.
 2. Update $$V$$: similarly.
 
+In the following sections, let's introduce other versions of Metropolis-Hastings.
+
+## Independent Metropolis-Hastings
+
+[Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715) presents the following algorithm:
+
+![](imh.png)
+
+## Gamma Metropolis-Hastings
+
+The algorithms in this section are also adopted from 
+[Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715).
+
+
+

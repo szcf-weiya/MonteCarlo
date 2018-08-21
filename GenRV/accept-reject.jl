@@ -2,7 +2,7 @@
 ## author: weiya <szcfweiya@gmail.com>
 ## date: 2018-08-19
 
-function AccRej(f::Function, M)
+function AccRej(f::Function, g::Function, M)
     ## use normal distribution N(0, 1) as sampling function g
     while true
         x = randn()
@@ -42,6 +42,6 @@ end
 N = 500;
 data = ones(N);
 for i = 1:500
-    data[i] = AccRej(f, sqrt(2*pi)*5)
+    data[i] = AccRej(f, g, sqrt(2*pi)*5)
 end
 
