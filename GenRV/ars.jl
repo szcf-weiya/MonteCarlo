@@ -5,6 +5,7 @@
 ## refer to Inferentialist's R code: 
 ##   https://blog.inferentialist.com/2016/09/26/adaptive-sampling.html
 
+module corears
 # example 3.22 in Davison(2008)
 r = 2; m = 10; mu = 0; sig2 = 1;
 # range of y
@@ -110,4 +111,7 @@ N = 100
 res = ones(N);
 for i = 1:N
     res[i] = ars([-1.8,-1.1,-0.5,-0.2])
+end
+
+export zfix, hplus, gplus_cdf, gplus_sample
 end
