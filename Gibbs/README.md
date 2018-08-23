@@ -107,5 +107,22 @@ And we can obtain the following algorithm,
 
 But it seems to be not obvious to derive the above algorithm, so I wrote some more details
 
-![](details_alg35.png)
+![](details_alg35.jpg)
+
+## Reversible Data Augmentation
+
+![](rdataaug.png)
+
+## Reversible Gibbs Sampler
+
+![](rgibbs.png)
+
+## Random Sweep Gibbs Sampler
+
+![](rsgibbs.png)
+
+## Random Gibbs Sampler
+
+![](randgibbs.png)
+
 
