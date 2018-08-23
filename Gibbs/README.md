@@ -90,3 +90,22 @@ end
 ## example
 rnorm_slice(100)
 ```
+
+## Data Augmentation
+
+A special case of Completion Gibbs Sampler.
+
+![](dataaug.png)
+
+Let's illustrate the scheme with grouped counting data.
+
+![](ex-7-2-2.png)
+
+And we can obtain the following algorithm,
+
+![](pois_gamma_gibbs.png)
+
+But it seems to be not obvious to derive the above algorithm, so I wrote some more details
+
+![](details_alg35.png)
+
