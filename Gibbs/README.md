@@ -125,4 +125,18 @@ But it seems to be not obvious to derive the above algorithm, so I wrote some mo
 
 ![](randgibbs.png)
 
+## Hybrid Gibbs Samplers
+
+![](hybridMCMC.png)
+
+## Metropolization of the Gibbs Sampler
+
+![](metrogibbs.png)
+
+Let us illuatrate this algorithm with the following example.
+
+![](ex-7-2-3.png)
+
+![](ex-7-3-8.png)
+
 
