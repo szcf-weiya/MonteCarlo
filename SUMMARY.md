@@ -4,6 +4,7 @@
 * [Generate R.V.](GenRV/README.md)
     * [Special Distribution](GenRV/special.md)
 * [Gibbs](Gibbs/README.md)
+    * [Comparing two groups](Gibbs/group-comparison.md)
 * [MC Approximation](MCApproximation/README.md)
 * [MC Integration](MCIntegration/README.md)
 * [MC Optimization](MCOptim/README.md)
