@@ -107,7 +107,7 @@ And we can obtain the following algorithm,
 
 But it seems to be not obvious to derive the above algorithm, so I wrote some more details
 
-![](details_alg35.jpg)
+![](details_alg35_fix.jpg)
 
 ## Reversible Data Augmentation
 
