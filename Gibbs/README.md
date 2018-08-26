@@ -131,6 +131,8 @@ Then he argues that $$m$$ copies of $$\mathbf y_{mis}$$ in each iteration is not
 
 ![](summary-DA.png)
 
+![](scheme-DA.png)
+
 It seems to agree with the algorithm presented by [Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715).
 
 Another example:
