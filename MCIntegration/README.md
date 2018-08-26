@@ -1,5 +1,11 @@
 # Monte Carlo Integration
 
+## Classical Monte Carlo Integration
+
+[Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715) introduces the classical Monte Carlo integration:
+
+![](classical-mc.png)
+
 ## Toy Example
 
 为了计算积分
@@ -18,6 +24,14 @@
 ![](https://latex.codecogs.com/gif.latex?%5Cfrac%7B1%7D%7BV%7D%7B%7D%5Csqrt%7Bm%7D%28%5Chat%20I_m-I%29%5Crightarrow%20N%280%2C%20%5Csigma%5E2%29)
 
 其中![](https://latex.codecogs.com/gif.latex?%5Csigma%5E2%3Dvar%28g%28%5Cmathbf%20x%29%29)
+
+另外，注意到
+
+$$
+I = \int_Dg(\mathbf x)d\mathbf x = \int_D Vg(\mathbf x)\frac 1V d\mathbf x = {\mathbb E}_f[Vg(\mathbf x)],
+$$
+
+则可以直接利用上一节的结论。
 
 ```r
 ## estimate pi
