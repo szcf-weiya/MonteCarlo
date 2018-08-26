@@ -113,7 +113,7 @@ Another example:
 
 ![](ex-7-2-3.png)
 
-It seems that we do not need to derive the explicit form of $g(x, z)$, if we can directly obtain the conditional distribution. We can use the following Julia program to sample.
+It seems that we do not need to derive the explicit form of $$g(x, z)$$, if we can directly obtain the conditional distribution. We can use the following Julia program to sample.
 
 ```julia
 ## Julia program for Grouped Multinomial Data (Ex. 7.2.3)
