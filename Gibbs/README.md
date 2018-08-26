@@ -127,6 +127,12 @@ But it seems to be not obvious to derive the above algorithm, so I wrote some mo
 
 ![](DA-lj.png)
 
+Then he argues that $$m$$ copies of $$\mathbf y_{mis}$$ in each iteration is not really necessary. And briefly summary the DA algorithm:
+
+![](summary-DA.png)
+
+It seems to agree with the algorithm presented by [Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715).
+
 Another example:
 
 ![](ex-7-2-3.png)
