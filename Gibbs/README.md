@@ -123,6 +123,10 @@ But it seems to be not obvious to derive the above algorithm, so I wrote some mo
 
 ![](details_alg35_fix.jpg)
 
+[Liu, Jun S. (2008)](https://www.springer.com/gp/book/9780387763699) also presents the DA algorithm which based on Bayesian missing data problem.
+
+![](DA-lj.png)
+
 Another example:
 
 ![](ex-7-2-3.png)
