@@ -1,6 +1,12 @@
 # Gibbs Sampler
 
+[Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715) gives the following algorithm,
+
 ![](gibbs.png)
+
+while [Liu, Jun S. (2008)](https://www.springer.com/gp/book/9780387763699) introduces two types of Gibbs sampling strategy.
+
+![](two-types-gibbs.png)
 
 ## Bivariate Gibbs sampler
 
@@ -64,7 +70,15 @@ rtrunormal(1000, 1.0, 1.0, 1.2)
 
 ## Slice Sampler
 
+[Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715) introduces the following slice sampler algorithm,
+
 ![](slice.png)
+
+and [Liu, Jun S. (2008)](https://www.springer.com/gp/book/9780387763699) also presents the slice sampler with slightly different expression:
+
+![](slice-lj.png)
+
+In my opinion, we can illustrate this algorithm with one dimensioanl case. Suppose we want to sample from normal distribution (or uniform distribution), we can sample uniformly from the region encolsed by the coordinate axis and the density function, that is a bell shape (or a square).
 
 Consider the normal distribution as an instance.
 
