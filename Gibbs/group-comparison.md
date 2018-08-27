@@ -76,6 +76,10 @@ We can reproduce the figures as show in Fig. 8.2.
 
 ## Comparing multiple groups
 
+### Heterogeneity across group means
+
+![](fig-8-3.png)
+
 posterior factorization
 
 ![](multi-group-factor.png)
@@ -153,3 +157,12 @@ for (s in 1:S)
   SMT[s, ] = c(sigma2, mu, tau2)
 }
 ```
+
+### Heterogeneity across group means and variances
+
+![](fig-8-10.png)
+
+Similarly, we can get the posterior factorization and full conditional distributions.
+
+![](multi-group-case-2.jpg)
+
