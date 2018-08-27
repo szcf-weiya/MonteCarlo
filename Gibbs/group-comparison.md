@@ -1,5 +1,7 @@
 # Group comparisons
 
+## Comparing two groups
+
 This section is based on chapter 8 of [Hoff, P. D. (2009)](https://github.com/szcf-weiya/MonteCarlo/blob/master/References/A_First_Course_in_Bayesian_Statistical_Methods.pdf).
 
 We can use the following R code to approximate the posterior distribution $$p(\mu, \delta, \sigma^2\mid \mathbf y_1,\mathbf y_2)$$.
@@ -71,3 +73,18 @@ We can reproduce the figures as show in Fig. 8.2.
 ![](reproduce-fig-8-2l.png)
 
 ![](reproduce-fig-8-2r.png)
+
+## Comparing multiple groups
+
+1. posterior factorization
+
+![](multi-group-factor.png)
+
+2. full conditional distributions
+
+![](multi-group-con-1.png)
+
+![](multi-group-con-2.png)
+
+![](multi-group-con-3.png)
+
