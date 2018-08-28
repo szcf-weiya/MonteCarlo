@@ -7,7 +7,7 @@ using SpecialFunctions
 using StatsBase
 using DelimitedFiles
 
-function higibbs(Y, T, mu0 = 50.0, gamma20 = 25.0, nu0 = 1.0, sigma20 = 100.0, eta0 = 1.0, tau20 = 100.0, a = 1.0, b = 100.0, alpha = 1.0, NUMAX = 40)
+function higibbs(Y, T, mu0 = 50.0, gamma20 = 25.0, nu0 = 1.0, sigma20 = 100.0, eta0 = 1.0, tau20 = 100.0, a = 1.0, b = 1/100.0, alpha = 1.0, NUMAX = 40)
     m = size(unique(Y[:,1]), 1)
     # starting value
     ybar = ones(m)
@@ -20,7 +20,7 @@ function higibbs(Y, T, mu0 = 50.0, gamma20 = 25.0, nu0 = 1.0, sigma20 = 100.0, e
         n[j] = size(yj, 1)
     end
     theta = ybar
-    sigma2 = sv
+    sigma2 = copy(sv)
 #    sigma20 = 1 / mean(sigma2)
 #    nu0 = 2 * mean(sigma2)^2 / var(sigma2)
     mu = mean(theta)
@@ -65,26 +65,54 @@ function higibbs(Y, T, mu0 = 50.0, gamma20 = 25.0, nu0 = 1.0, sigma20 = 100.0, e
         
         # sample sigma20
         shapesig = a + 0.5 * m * nu0
-        ratesig = b + 0.5 * nu0 * sum(sigma2)
+        ratesig = b + 0.5 * nu0 * sum(1 ./ sigma2)
         rgamma = Gamma(shapesig, 1/ratesig)
         sigma20 = rand(rgamma, 1)[1]
         
         # sample nu0
         x = 1:NUMAX
         lpnu0 = ones(NUMAX)
-        lpnu0 .= m * ( .5 * x .* log.(sigma20 * x / 2) .- lgamma.(x/2) ) .+ (x / 2 .- 1) * sum(log.(1 ./ sigma2)) .- x .* (alpha + .5 * sigma20 * sum(1 ./ sigma2))
+        lpnu0 .= m * ( .5 * x .* log.(sigma20 * x / 2) .- lgamma.(x/2) ) .+ (x / 2 .+ 1) * sum(log.(1 ./ sigma2)) .- x .* (alpha + .5 * sigma20 * sum(1 ./ sigma2))
+        #println(lpnu0)
         nu0 = sample(x, pweights(exp.(lpnu0 .- maximum(lpnu0))))
+#        println(pweights(exp.(lpnu0 .- maximum(lpnu0))))
         
         # store results
         MTSN[t, :] .= [mu, tau2, sigma20, nu0]
     end
-    return THETA, SIGMA2, MTSN
+    return THETA, SIGMA2, MTSN, sv, n
 end
 
 # run
 Y = readdlm("math-score-Y.csv")
-THETA, SIGMA2, MTSN = higibbs(Y, 100)
+THETA, SIGMA2, MTSN, sv, n = higibbs(Y, 5000)
 
 using PyPlot
-plot(MTSN[:,3])
+# histogram
+plt[:subplot](221)
+plt[:hist](MTSN[:,2])
+ylabel(L"$\mu$")
+plt[:subplot](222)
+plt[:hist](MTSN[:,2])
+ylabel(L"$\tau^2$")
+plt[:subplot](223)
+plt[:hist](MTSN[:,3])
+ylabel(L"$\nu_0$")
+plt[:subplot](224)
+plt[:hist](MTSN[:,4])
+ylabel(L"$\sigma_0^2$")
+plt[:tight_layout]()
+show()
+
+# shrinkage
+f, (ax1, ax2) = plt[:subplots](1, 2)
+ax1[:scatter](sv, SIGMA2[end,:])
+ax1[:plot](sv, sv)
+ax1[:set_xlabel](L"$s^2$")
+ax1[:set_ylabel](L"$\hat \sigma^2$")
+ax2[:scatter](n, sv-SIGMA2[end,:])
+ax2[:plot](n, zeros(size(n, 1)))
+ax2[:set_xlabel]("sample size")
+ax2[:set_ylabel](L"$s^2-\hat \sigma^2$")
+plt[:tight_layout]()
 show()
