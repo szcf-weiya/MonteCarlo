@@ -164,7 +164,7 @@ for (s in 1:S)
 
 Similarly, we can get the posterior factorization and full conditional distributions.
 
-![](multi-group-case-2.jpg)
+![](multi-group-case-2-fix.jpg)
 
 We can use the following Julia code to implement this Gibbs sampler.
 
@@ -236,7 +236,7 @@ function higibbs(Y, T, mu0 = 50.0, gamma20 = 25.0, nu0 = 1.0, sigma20 = 100.0, e
         
         # sample sigma20
         shapesig = a + 0.5 * m * nu0
-        ratesig = b + 0.5 * sum(1 ./ sigma2)
+        ratesig = b + 0.5 * nu0 * sum(sigma2)
         rgamma = Gamma(shapesig, 1/ratesig)
         sigma20 = rand(rgamma, 1)[1]
         
