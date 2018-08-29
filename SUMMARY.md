@@ -13,4 +13,5 @@
 * [Metropolis-Hastings](MH/README.md)
 * [SMCTC](SMCTC/README.md)
 * [Misc](Misc/README.md)
+    * [R vs. Julia](Gibbs/r-vs-julia/comp-res.md)
 * [References](References/README.md)
