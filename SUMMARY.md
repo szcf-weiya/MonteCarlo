@@ -13,6 +13,7 @@
     * [MCMC diagnostics](MCMC/MCMCdiagnostics.md)
 * [Metropolis](Metropolis/README.md)
 * [Metropolis-Hastings](MH/README.md)
+* [Diagnosing Convergence](DC/README.md)
 * [SMCTC](SMCTC/README.md)
 * [Misc](Misc/README.md)
     * [R vs. Julia](Gibbs/r-vs-julia/comp-res.md)
