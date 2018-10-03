@@ -77,7 +77,7 @@ mh_gamma()
 
 ![](rmh.png)
 
-We can write the following Julia code which use uniform distribution $${\cal U}[-\delta,delta]$$ as $$g$$.
+We can write the following Julia code which use uniform distribution $${\cal U}[-\delta,\delta]$$ as $$g$$.
 
 ```julia
 # random walk Metropolis-Hastings
