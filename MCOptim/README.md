@@ -18,7 +18,7 @@ Fundamental idea: A change of scale, called **temperature**, allows for faster m
 
 ![](simulated-annealing.png)
 
-It is important to note that if the larger $T$ is, accepting one decreasing is more likely.
+It is important to note that if the larger $$T$$ is, accepting one decreasing is more likely.
 
 Example: To maximize $$h(x)=[\cos(50x)+\sin(20x)]^2$$.
 
