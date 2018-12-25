@@ -16,6 +16,7 @@ $$
 Z\equiv \sum_{\mathbf x}\exp\{-H(\mathbf x)\} = \sum_{x_d}\Big[\cdots\Big[ \sum_{x_1}\Big\{\sum_{x_0}e^{-h(x_0,x_1)}\Big\}e^{-h_2(x_1,x_2)} \Big] \cdots\Big]\,.
 $$
 The simulating procedure is as follows:
+
 <!--
 1. Calculate $$V_1(x)=\sum_{x_0\in S}e^{-h(x_0,x_1)}$$
 2. For $$t=2,\ldots,d$$, calculate 
@@ -29,6 +30,7 @@ $$
 p_t(x) = \frac{V_t(x)e^{-h_{t+1}(x,x_{t+1})}}{\sum_{y\in S}V_t(y)e^{-h_{t+1}(y,x_{t+1})}}
 $$
 -->
+
 ![](exact.png)
 
 ## Exact Method for Ising Model
