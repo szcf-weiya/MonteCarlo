@@ -4,7 +4,7 @@
 
 There is an important probability distribution used in applications (Liu, 2008):
 $$
-\pi(\mathbf x) \propto \exp\Big\{-\sum_{i=1}^dh_i(x_{i-1},x_i)\Big\} \equiv \exp(-H(\mathbf x)) \tag{*}
+\pi(\mathbf x) \propto \exp\Big\{-\sum_{i=1}^dh_i(x_{i-1},x_i)\Big\} \equiv \exp(-H(\mathbf x))
 $$
 where $$\mathbf x = (x_0,x_1,\ldots,x_d)$$. This type of model exhibits a so-called "Markovian structure" because 
 $$
@@ -16,6 +16,7 @@ $$
 Z\equiv \sum_{\mathbf x}\exp\{-H(\mathbf x)\} = \sum_{x_d}\Big[\cdots\Big[ \sum_{x_1}\Big\{\sum_{x_0}e^{-h(x_0,x_1)}\Big\}e^{-h_2(x_1,x_2)} \Big] \cdots\Big]\,.
 $$
 The simulating procedure is as follows:
+<!--
 1. Calculate $$V_1(x)=\sum_{x_0\in S}e^{-h(x_0,x_1)}$$
 2. For $$t=2,\ldots,d$$, calculate 
 $$
@@ -27,6 +28,8 @@ $$
 $$
 p_t(x) = \frac{V_t(x)e^{-h_{t+1}(x,x_{t+1})}}{\sum_{y\in S}V_t(y)e^{-h_{t+1}(y,x_{t+1})}}
 $$
+-->
+![](exact.png)
 
 ## Exact Method for Ising Model
 
@@ -120,3 +123,6 @@ and the corresponding autocorrelation plots:
 ![](IsingACF-rep9.png)
 
 
+## References
+
+[Liu, J. S. (2008). Monte Carlo strategies in scientific computing. Springer Science & Business Media.](../../References/Monte-Carlo-Strategies-in-Scientific-Computing.pdf)
