@@ -10,6 +10,11 @@ $$
 
 where $$\mathbf x = (x_0,x_1,\ldots,x_d)$$.
 
+
 var html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
+    throwOnError: false
+});
+
+katex.render("c = \\pm\\sqrt{a^2 + b^2}", element, {
     throwOnError: false
 });
