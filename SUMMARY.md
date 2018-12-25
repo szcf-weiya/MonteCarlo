@@ -15,6 +15,8 @@
 * [Metropolis-Hastings](MH/README.md)
 * [Diagnosing Convergence](DC/README.md)
 * [SMCTC](SMCTC/README.md)
+* [Tempering](Tempering/README.md)
+    * [Parallel Tempering](Tempering/Ising-Model/README.md)
 * [Misc](Misc/README.md)
     * [R vs. Julia](Gibbs/r-vs-julia/comp-res.md)
 * [References](References/README.md)
