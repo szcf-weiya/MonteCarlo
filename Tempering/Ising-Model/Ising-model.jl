@@ -84,11 +84,13 @@ end
 
 function singleMCMC(M = 2000; T = 0.1, d = 100)
     # intial x
+    X = ones(Int, M, d)
     x = 2 * rand(Bernoulli(1/2), d) .- 1
     for m = 1:M
         sampleX!(x, T)
+        X[m, :] .= x
     end
-    return x
+    return X
 end
 # result: always trap in one of the modes
 
@@ -143,3 +145,9 @@ for i in 1:10
     plot(autocor(res), label = [L"T=0.1", L"T=0.2", L"T=0.3", L"T=0.4"], title = "ACF")
     savefig("IsingACF-rep$i.png")
 end 
+
+res, = parallel(d=3)
+X = singleMCMC(d=3)
+p1 = histogram(res[:,1])
+p2 = histogram(X[:,1], nbins = 2)
+plot(p1, p2, layout = (1, 2), legend = false)
