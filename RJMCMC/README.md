@@ -9,7 +9,7 @@ p(y\mid x) &= \sum_{i=1}^n\log\{x(y_i)\}-\int_0^Lx(t)dt\\
 \end{align*}
 $$
 
-where $m_j=\#\\{y_i\in[s_j,s_{j+1})\\}$.
+where $$m_j=\#\\{y_i\in[s_j,s_{j+1})\\}$$.
 
 ### H Move
 
