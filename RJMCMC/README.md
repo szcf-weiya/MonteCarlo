@@ -21,7 +21,7 @@ Note that
 $$
 \log\frac{h_j'}{h_j}= u \,,
 $$
-it follows that the CDF of $h_j'$ is 
+it follows that the CDF of $$h_j'$$ is 
 $$
 F(x) = P(h_j'\le x) = P(e^uh\le x) = P(u\le \log(x/h)) = log(x/h) + 1/2
 $$
