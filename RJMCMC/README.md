@@ -109,7 +109,15 @@ $$
 The acceptance probability for the corresponding death step has the same form with the appropriate change of labelling of the variables, and the ratio terms inverted.
 
 
+## Results
 
+The histogram of number of change points is 
+
+![](histogram_num_of_change_points.png)
+
+And we can get the density plot of position (or height) conditional on the number of change points $$k$$, for example, the following plot is for the position when $$k=1,2,3$$
+
+![](density_plot_position.png)
 
 ## References
 
