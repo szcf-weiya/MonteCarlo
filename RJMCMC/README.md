@@ -8,8 +8,8 @@ $$
 
 ### H Move
 
-1. choose one of $h_0,h_1,\ldots,h_k$ at random, obtaining $h_j$
-2. propose a change to $h_j'$ such that $\log(h_j'\mid h_j)\sim U[-\frac 12, \frac 12]$.
+1. choose one of $$h_0,h_1,\ldots,h_k$$ at random, obtaining $$h_j$$
+2. propose a change to $$h_j'$$ such that $$\log(h_j'\mid h_j)\sim U[-\frac 12, \frac 12]$$.
 3. the acceptance probability is 
 $$
 \begin{align*}
@@ -73,7 +73,7 @@ $$
 \frac{h_{j+1}'}{h_j'}=\frac{1-u}{u}
 $$
 
-with $u$ drawn uniformly from $[0,1]$.
+with $u$ drawn uniformly from $$[0,1]$$.
 
 The prior ratio, becomes 
 
@@ -95,7 +95,7 @@ $$
 
 ### Death step
 
-If $s_{j+1}$ is removed, the new height over the interval $(s_j',s_{j+1}')=(s_j,s_{j+2})$ is $h_j'$, the weighted geometric mean satisfying
+If $$s_{j+1}$$ is removed, the new height over the interval $$(s_j',s_{j+1}')=(s_j,s_{j+2})$$ is $h_j'$$, the weighted geometric mean satisfying
 
 $$
 (s_{j+1}-s_j)\log(h_j) + (s_{j+2}-s_{j+1})\log(h_{j+1}) = (s_{j+1}'-s_j')\log(h_j')
