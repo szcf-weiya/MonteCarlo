@@ -95,7 +95,7 @@ $$
 
 ### Death step
 
-If $$s_{j+1}$$ is removed, the new height over the interval $$(s_j',s_{j+1}')=(s_j,s_{j+2})$$ is $h_j'$$, the weighted geometric mean satisfying
+If $$s_{j+1}$$ is removed, the new height over the interval $$(s_j',s_{j+1}')=(s_j,s_{j+2})$$ is $$h_j'$$, the weighted geometric mean satisfying
 
 $$
 (s_{j+1}-s_j)\log(h_j) + (s_{j+2}-s_{j+1})\log(h_{j+1}) = (s_{j+1}'-s_j')\log(h_j')
