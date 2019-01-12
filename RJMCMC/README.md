@@ -28,7 +28,7 @@ $$
 $$
 it follows that the CDF of $$h_j'$$ is 
 $$
-F(x) = P(h_j'\le x) = P(e^uh\le x) = P(u\le \log(x/h)) = log(x/h) + 1/2
+F(x) = P(h_j'\le x) = P(e^uh\le x) = P(u\le \log(x/h)) = \log(x/h) + 1/2
 $$
 and 
 $$
@@ -62,7 +62,7 @@ $$
 \pi(s_1,s_2,\ldots,s_k)=\frac{(2k+1)!}{L^{2k+1}}\prod_{j=0}^{k+1}(s_{j+1}-s_j)
 $$
 
-### Birth Step
+### Birth Move
 
 Choose a position $$s^*$$ uniformly distributed on $$[0,L]$$, which must lie within an existing interval $$(s_j,s_{j+1})$$ w.p 1. 
 
@@ -78,7 +78,7 @@ $$
 \frac{h_{j+1}'}{h_j'}=\frac{1-u}{u}
 $$
 
-with $u$ drawn uniformly from $$[0,1]$$.
+with $$u$$ drawn uniformly from $$[0,1]$$.
 
 The prior ratio, becomes 
 
@@ -95,10 +95,10 @@ $$
 and the Jacobian is 
 
 $$
-\frac{(h_j'+h_{j+1}')}{h_j}
+\frac{(h_j'+h_{j+1}')^2}{h_j}
 $$
 
-### Death step
+### Death Move
 
 If $$s_{j+1}$$ is removed, the new height over the interval $$(s_j',s_{j+1}')=(s_j,s_{j+2})$$ is $$h_j'$$, the weighted geometric mean satisfying
 
