@@ -14,6 +14,7 @@
 * [Metropolis](Metropolis/README.md)
 * [Metropolis-Hastings](MH/README.md)
 * [PBMCMC](PBMCMC/README.md)
+* [RJMCMC](RJMCMC/README.md)
 * [Diagnosing Convergence](DC/README.md)
 * [SMCTC](SMCTC/README.md)
 * [Tempering](Tempering/README.md)
