@@ -1,21 +1,26 @@
 ## RJMCMC for change points
 
-The likelihood function is 
+The log-likelihood function is 
 
 $$
-p(y\mid x) = \exp(-\sum_{j=1}^kh_j(s_{j+1}-s_j)+\sum_{j=1}^km_j\log h_j)
+\begin{align*}
+p(y\mid x) &= \sum_{i=1}^n\log\{x(y_i)\}-\int_0^Lx(t)dt\\
+&= \sum_{j=1}^km_j\log h_j-\sum_{j=0}^kh_j(s_{j+1}-s_j)
+\end{align*}
 $$
+
+where $m_j=\#\\{y_i\in[s_j,s_{j+1})\\}$.
 
 ### H Move
 
 1. choose one of $$h_0,h_1,\ldots,h_k$$ at random, obtaining $$h_j$$
-2. propose a change to $$h_j'$$ such that $$\log(h_j'\mid h_j)\sim U[-\frac 12, \frac 12]$$.
+2. propose a change to $$h_j'$$ such that $$\log(h_j'/h_j)\sim U[-\frac 12, \frac 12]$$.
 3. the acceptance probability is 
 $$
-\begin{align*}
+\begin{aligned}
 \alpha(h_j, h_j') &=\frac{p(h_j'\mid y)}{p(h_j\mid y)}\times \frac{J(h_j\mid h_j')}{J(h_j'\mid h_j)}\\
 &= \frac{p(y\mid h_j')}{p(y\mid h_j)}\times\frac{\pi(h_j')}{\pi(h_j)}\times\frac{J(h_j\mid h_j')}{J(h_j'\mid h_j)}\,.
-\end{align*}
+\end{aligned}
 $$
 Note that 
 $$
@@ -35,10 +40,10 @@ J(h_j'\mid h_j) = \frac{1}{h_j'}\,.
 $$
 Then we have
 $$
-\begin{align*}
+\begin{aligned}
 \alpha(h_j,h_j') &= \frac{p(y\mid h_j')}{p(y\mid h_j)}\times \frac{(h_j')^{\alpha}\exp(-\beta h_j')}{h_j^\alpha\exp(-\beta h_j)}\\
 &=\text{likelihood ratio}\times (h_j'/h_j)^\alpha\exp\{-\beta(h_j'-h_j)\}
-\end{align*}
+\end{aligned}
 $$
 
 ### P Move
