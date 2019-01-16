@@ -204,6 +204,7 @@ gmulti(100, x, a, b)
 
 ## Hybrid Gibbs Samplers
 
+
 ![](hybridMCMC.png)
 
 ## Metropolization of the Gibbs Sampler
