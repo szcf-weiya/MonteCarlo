@@ -17,6 +17,13 @@ Of course, we can change the sampling order.
 
 No need to require the acceptance ratio to be symmetric.
 
+![](alg_mh.png)
+
+
+
+<!--
+Two components:
+
 1. Update $$U$$:
     1. sample $$u^*\sim J_u(u\mid u^{(s)}, v^{(s)})$$
     2. compute the acceptance ratio
@@ -25,6 +32,8 @@ No need to require the acceptance ratio to be symmetric.
     $$
     3. set $$u^{(s+1)}$$ to $$u^*$$ w.p. $$\mathrm{min}(1,r)$$.
 2. Update $$V$$: similarly.
+-->
+
 
 In the following sections, let's introduce other versions of Metropolis-Hastings.
 
