@@ -58,7 +58,7 @@ K(x_{n-1},x_n) &= \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}(x_n-\theta
 \end{aligned}
 $$
 
-when $$x_{n-1}\in[\underline w, \bar w]$$. The set $$C = [\underline w, \bar w]$$ is a **small set**, as the measure $$\nu_1$$ with density 
+when $$x_{n-1}\in[\underline w, \bar w]$$. The set $$C = [\underline w, \bar w]$$ is a [small set](def_small.png), as the measure $$\nu_1$$ with density 
 $$
 \frac{\exp\{(-x^2+2\theta x\underline w)/2\sigma^2\}I_{x>0} + \exp\{(-x^2+2\theta x\bar w)/2\sigma^2\}I_{x<0} }{\sqrt{2\pi}\sigma\{[1-\Phi(-\theta\underline w/\sigma^2)]\exp(\theta^2\underline w^2/2\sigma^2)+\Phi(-\theta\bar w/\sigma)\exp(\theta^2\bar w^2/2\sigma^2)\}}\,,
 $$
