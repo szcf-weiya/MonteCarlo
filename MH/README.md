@@ -22,7 +22,7 @@ No need to require the acceptance ratio to be symmetric.
 Remarks:
 
 - A sample produced by the above algorithm differs from an iid sample. For one thing, such a sample may involve repeated occurrences of the same value, since rejection of $$Y_t$$ leads to repetition of $$X^{(t)}$$ at time $$t+1$$ (an impossible occurrence in absolutely continuous iid settings)
-- Minimal regularity conditions on both $$f$$ and the conditional distribution $$q$$ for $$f$$ to be the limiting distribution of the chain $$X^{(t)}$$: $$\cup_{x\in \mathrm{supp}\,,f}\mathrm{supp}\,,q(y\mid x)\supset \mathrm{supp}\,,f$$.
+- Minimal regularity conditions on both $$f$$ and the conditional distribution $$q$$ for $$f$$ to be the limiting distribution of the chain $$X^{(t)}$$: $$\cup_{x\in \mathrm{supp}\, f}\mathrm{supp}\, q(y\mid x)\supset \mathrm{supp}\,,f$$.
 - $$f$$ is the stationary distribution of the Metropolis chain: it satisfies the detailed balance property.
 $$
 K(x,y) = \rho(x,y)q(y\mid x)+(1-r(x))\delta_x(y)\,.
