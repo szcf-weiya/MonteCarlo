@@ -22,3 +22,4 @@ If the marginal are not proper, or if they do not exist, then the chain is not p
 
 ![](def6.4.png)
 
+- Strong Markov property
