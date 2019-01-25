@@ -6,6 +6,7 @@
 * [Gibbs](Gibbs/README.md)
     * [Comparing two groups](Gibbs/group-comparison.md)
     * [Linear Regression](Gibbs/linear/README.md)
+* [Markov Chain](MarkovChain/README.md)
 * [MC Approximation](MCApproximation/README.md)
 * [MC Integration](MCIntegration/README.md)
 * [MC Optimization](MCOptim/README.md)
