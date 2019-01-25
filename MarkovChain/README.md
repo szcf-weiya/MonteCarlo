@@ -44,12 +44,16 @@ with $$\varepsilon_n\in N(0,\sigma^2)$$, and if the $$\varepsilon_n$$'s are inde
 - The Markovian properties of an AR(q) can be derived from $$(X_n,\ldots,X_{n-q+1})$$.
 - ARMA(p, q) doesn't fit in the Markovian framework.
 
-Since $$X_n\mid x_{n-1}\sim N(\theta x_{n-1},\sigma^2)$$, consider the lower bound of the transition kernel ($\theta > 0$):
+Since $$X_n\mid x_{n-1}\sim N(\theta x_{n-1},\sigma^2)$$, consider the lower bound of the transition kernel ($$\theta > 0$$):
 
 $$
 \begin{aligned}
 K(x_{n-1},x_n) &= \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}(x_n-\theta x_{n-1})^2\Big\}\\
-&\ge \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}\max\{(x_n-\theta \underline w)^2, (x_n-\theta \bar w)^2\}\}\\
-&\ge \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ \max\{-2\theta x_n\underline w,-2\theta x_n\bar w\}+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\}
+&\ge \frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\max\{(x_n-\theta \underline w)^2, (x_n-\theta \bar w)^2\}\Big\}\\
+&\ge \frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ \max\{-2\theta x_n\underline w,-2\theta x_n\bar w\}+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}\\
+&=\begin{cases}
+\frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ -2\theta x_n\underline w+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}\\
+\frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ -2\theta x_n\bar w+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}
+\end{cases}
 \end{aligned}
 $$
