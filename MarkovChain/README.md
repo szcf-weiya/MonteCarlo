@@ -14,7 +14,7 @@ If the marginals are proper, for convergence we only need our chain to be aperio
 
 If the marginal are not proper, or if they do not exist, then the chain is not positive recurrent. It is either null recurrent, and both cases are bad.
 
-The [detailed balance condition](detailed_balance_condition.png) is **not necessary** for $f$ to be a stationary measure associated with the transition kernel $K$, but it provides a sufficient condition that is often easy to check and that can be used for most MCMC algorithms.
+The [detailed balance condition](detailed_balance_condition.png) is **not necessary** for $f$ to be a stationary measure associated with the transition kernel $$K$$, but it provides a sufficient condition that is often easy to check and that can be used for most MCMC algorithms.
 
 Ergodicity: independence of initial conditions
 
@@ -39,7 +39,7 @@ $$
 \prod_{i=x\land y}^{x\vee y-1}\Big(\frac{M-i}{M}\Big)^2\,.
 $$
 
-The Bernoulli-Laplace chain is [aperiodic](def_period_discrete.png) and even [strongly aperiodic](def_period.png) since the diagonal terms satisfy $P_{xx}>0$ for every $x\in \{0,\ldots,K\}$.
+The Bernoulli-Laplace chain is [aperiodic](def_period_discrete.png) and even [strongly aperiodic](def_period.png) since the diagonal terms satisfy $$P_{xx}>0$$ for every $$x\in \{0,\ldots,K\}$$.
 
 Given the quasi-diagonal shape of the transition matrix, it is possible to directly determine the invariant distribution, $$\pi=(\pi_0,\ldots,\pi_K)$$. From the equation $$\pi P = \pi$$,
 
@@ -125,7 +125,7 @@ These conditions imply that $$\mu=0$$ and that $$\tau^2=\sigma^2/(1-\theta^2)$$,
 ![](ex_branching_process.png)
 
 - If $$\phi$$ doesn't have a constant term, i.e., $$P(X_1=0)=0$$, then chain $$S_t$$ is necessarily transient since it is increasing.
-- If $$P(X_1=0)>0$$, the probability of a return to 0 at time $$t$$ is $$\rho(t)=P(S_t=0)=g_t(0)$$, which thus satisfies the recurrence equation $$\rho_t=\phi(\rho_{t-1})$$. There exists a limit $$\rho$$ different from 1, such that $$\rho=\phi(\rho)$$, iff $$\phi'(1)>1$$; namely if $$E[X]>1$$. The chain is thus transient when the average number of siblings per individual is larger than 1. If there exists a restarting mechanism in 0, $S_{t+1}\mid S_t=0\sim\phi$, it is easily shown that when $\phi'(1)>1$, the number of returns to 0 follows a geometric distribution with parameter $$\rho$$.
+- If $$P(X_1=0)>0$$, the probability of a return to 0 at time $$t$$ is $$\rho(t)=P(S_t=0)=g_t(0)$$, which thus satisfies the recurrence equation $$\rho_t=\phi(\rho_{t-1})$$. There exists a limit $$\rho$$ different from 1, such that $$\rho=\phi(\rho)$$, iff $$\phi'(1)>1$$; namely if $$E[X]>1$$. The chain is thus transient when the average number of siblings per individual is larger than 1. If there exists a restarting mechanism in 0, $$S_{t+1}\mid S_t=0\sim\phi$$, it is easily shown that when $$\phi'(1)>1$$, the number of returns to 0 follows a geometric distribution with parameter $$\rho$$.
 
 ![](i1_branch_process.png)
 
