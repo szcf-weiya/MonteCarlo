@@ -52,8 +52,18 @@ K(x_{n-1},x_n) &= \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}(x_n-\theta
 &\ge \frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\max\{(x_n-\theta \underline w)^2, (x_n-\theta \bar w)^2\}\Big\}\\
 &\ge \frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ \max\{-2\theta x_n\underline w,-2\theta x_n\bar w\}+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}\\
 &=\begin{cases}
-\frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ -2\theta x_n\underline w+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}\\
-\frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ -2\theta x_n\bar w+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}
-\end{cases}
+\frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ -2\theta x_n\underline w+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}& \text{if }x_n>0\\
+\frac{1}{\sqrt{2\pi}\sigma}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ -2\theta x_n\bar w+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\Big\}& \text{if }x_n<0
+\end{cases}\,,
 \end{aligned}
 $$
+
+when $x_{n-1}\in[\underline w, \bar w]$. The set $C = [\underline w, \bar w]$ is a **small set**, as the measure $\nu_1$ with density 
+$$
+\frac{\exp\{(-x^2+2\theta x\underline w)/2\sigma^2\}I_{x>0} + \exp\{(-x^2+2\theta x\bar w)/2\sigma^2\}I_{x<0} }{\sqrt{2\pi}\sigma\{[1-\Phi(-\theta\underline w/\sigma^2)]\exp(\theta^2\underline w^2/2\sigma^2)+\Phi(-\theta\bar w/\sigma)\exp(\theta^2\bar w^2/2\sigma^2)\}}\,,
+$$
+satisfy 
+$$
+K^1(x,A)\ge \nu_1(A),\qquad \forall x\in C, \forall A\in {\cal B(X)}\,.
+$$
+
