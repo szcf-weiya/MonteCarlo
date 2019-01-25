@@ -18,8 +18,38 @@ If the marginal are not proper, or if they do not exist, then the chain is not p
 
 ![](def6.2.png)
 
-![](ex6.3.png)
 
 ![](def6.4.png)
 
-- Strong Markov property
+## Bernoulli-Laplace Model
+
+![](ex6.3.png)
+
+The finite chain is indeed irreducible since it is possible to connect the status $$x$$ and $$y$$ in $$\vert x-y\vert$$ steps with probability
+
+$$
+\prod_{i=x\land y}^{x\vee y-1}\Big(\frac{M-i}{M}\Big)^2\,.
+$$
+
+## AR(1) Models
+
+A simple illustration of Markov chains on continuous state-space. 
+
+$$
+X_n = \theta X_{n-1}+\varepsilon_n\;\theta\in \mathrm{I\!R}\,,
+$$
+
+with $$\varepsilon_n\in N(0,\sigma^2)$$, and if the $$\varepsilon_n$$'s are independent, $$X_n$$ is indeed independent from $$X_{n-2},X_{n-3},\ldots$$ conditionally on $$X_{n-1}$$.
+
+- The Markovian properties of an AR(q) can be derived from $$(X_n,\ldots,X_{n-q+1})$$.
+- ARMA(p, q) doesn't fit in the Markovian framework.
+
+Since $$X_n\mid x_{n-1}\sim N(\theta x_{n-1},\sigma^2)$$, consider the lower bound of the transition kernel ($\theta > 0$):
+
+$$
+\begin{aligned}
+K(x_{n-1},x_n) &= \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}(x_n-\theta x_{n-1})^2\Big\}\\
+&\ge \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}\max\{(x_n-\theta \underline w)^2, (x_n-\theta \bar w)^2\}\}\\
+&\ge \frac{1}{\sqrt{2\pi}}\exp\Big\{-\frac{1}{2\sigma^2}\Big[ \max\{-2\theta x_n\underline w,-2\theta x_n\bar w\}+x_n^2 + \theta^2\underline w^2\land \bar w^2 \Big]\}
+\end{aligned}
+$$
