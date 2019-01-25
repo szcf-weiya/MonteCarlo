@@ -2,11 +2,11 @@
 
 ## Gamma distribution
 
-Firstly, let's introduce how to generate $${\cal G}a(a,\beta)$$ where $$a$$ is an integral ([Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715)).
+Firstly, let's introduce how to generate $${\mathcal G}a(a,\beta)$$ where $$a$$ is an integral ([Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715)).
 
 ![](ex-2-2-1.png)
 
-Then when considering the general $${\cal G}a(\alpha,\beta)$$, we can use $${G}a(a, b)$$ as instrumental distribution in Accept-Rejection algorithm as mentioned in [Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715):
+Then when considering the general $${\mathcal G}a(\alpha,\beta)$$, we can use $${G}a(a, b)$$ as instrumental distribution in Accept-Rejection algorithm as mentioned in [Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715):
 
 ![](ex-3-3-7.png)
 

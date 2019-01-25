@@ -3,10 +3,10 @@
 The log-likelihood function is 
 
 $$
-\begin{align*}
+\begin{aligned}
 p(y\mid x) &= \sum_{i=1}^n\log\{x(y_i)\}-\int_0^Lx(t)dt\\
 &= \sum_{j=1}^km_j\log h_j-\sum_{j=0}^kh_j(s_{j+1}-s_j)
-\end{align*}
+\end{aligned}
 $$
 
 where $$m_j=\#\{y_i\in[s_j,s_{j+1})\}$$.
@@ -52,10 +52,10 @@ $$
 2. Propose $$s_j'\sim U[s_{j-1}, s_{j+1}]$$
 3. The acceptance probability is 
 $$
-\begin{align*}
+\begin{aligned}
 \alpha(s_j,s_j') &=\frac{p(y\mid s_j')}{p(y\mid s_j)}\times \frac{\pi(s_j')}{\pi(s_j)}\times \frac{J(s_j\mid s_j')}{J(s_j'\mid s_j)}\\
 &=\text{likelihood ratio}\times \frac{(s_{j+1}-s_j')(s_j'-s_{j-1})}{(s_{j+1}-s_j)(s_j-s_{j-1})}
-\end{align*}
+\end{aligned}
 $$
 since 
 $$

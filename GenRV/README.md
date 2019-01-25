@@ -189,14 +189,14 @@ Let's consider the slightly simple verison in which we do not need to consider $
 Consider the CDF of $$g_+=\exp(h_+)$$:
 
 $$
-\begin{align*}
+\begin{aligned}
 	G_+(y) & = \int_{-\infty}^y \exp(h_+(x)) dx \\
 		   & = \int_{-\infty}^{\min\{z_1,y\}} \exp(h_+(x)) dx \\
 		   & \qquad + \int_{z_1}^{\min\{z_2,\max\{y, z_1\}\}} \exp(h_+(x)) dx \\ 
 		   & \qquad + \cdots \\
 		   & \qquad + \int_{z_{k-1}}^{\min\{z_k,\max\{y, z_{k-1}\}\}} \exp(h_+(x)) dx \\
 		   & \qquad + \int_{z_k}^{\max\{z_k,y\}} \exp(h_+(x)) dx
-\end{align*}
+\end{aligned}
 $$
 
 and 

@@ -34,7 +34,7 @@ In the following sections, let's introduce other versions of Metropolis-Hastings
 
 ![](imh.png)
 
-Let's illustrate this algorithm with $${\cal G}a(\alpha, 1)$$. We have introduced how to sample from Gamma distribution via Accept-Reject algorithm in [Special Distributions](https://mc.hohoweiya.xyz/genrv/special), and it is straightforward to get the Gamma Metropolis-Hastings based on the ratio of $$f/g$$,
+Let's illustrate this algorithm with $${\mathcal G}a(\alpha, 1)$$. We have introduced how to sample from Gamma distribution via Accept-Reject algorithm in [Special Distributions](https://mc.hohoweiya.xyz/genrv/special), and it is straightforward to get the Gamma Metropolis-Hastings based on the ratio of $$f/g$$,
 
 ![](gamma_imh.png)
 
@@ -77,7 +77,7 @@ mh_gamma()
 
 ![](rmh.png)
 
-We can write the following Julia code which use uniform distribution $${\cal U}[-\delta,\delta]$$ as $$g$$.
+We can write the following Julia code which use uniform distribution $${\mathcal U}[-\delta,\delta]$$ as $$g$$.
 
 ```julia
 # random walk Metropolis-Hastings
