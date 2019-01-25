@@ -2,7 +2,7 @@
 
 In the setup of MCMC algorithms, we construct Markov chains from a transition kernel $$K$$, a conditional probability density such that $$X_{n+1}\sim K(X_n,X_{n+1})$$.
 
-The chain encountered in MCMC settings enjoy a very strong stability property, namely a **stationary probability distribution**; that is, a distribution $$\pi$$ such that if $$X_n\sim\pi$$, then $$X_{n+1}\sim \pi$$, if the kernel $$K$$ allows for free moves all over the state space. This freedom is called **irreducibility** in the theory of Markov chains and is formalized as the existence of $$n\in\mathbb{N}$$ such that $$P(X_n\in A\mid X_0)>0$$ for every $$A$$ such that $$\pi(A)>0$$. This property also ensures that most of the chains involved in MCMC algorithms are **recurrent** (that is, that the average number of visits to an arbitrary set $A$ is infinite), or even **Harris recurrent** (that is, such that the probability of an infinite number of returns to $A$ is 1).
+The chain encountered in MCMC settings enjoy a very strong stability property, namely a **stationary probability distribution**; that is, a distribution $$\pi$$ such that if $$X_n\sim\pi$$, then $$X_{n+1}\sim \pi$$, if the kernel $$K$$ allows for free moves all over the state space. This freedom is called **irreducibility** in the theory of Markov chains and is formalized as the existence of $$n\in\mathbb{N}$$ such that $$P(X_n\in A\mid X_0)>0$$ for every $$A$$ such that $$\pi(A)>0$$. This property also ensures that most of the chains involved in MCMC algorithms are **recurrent** (that is, that the average number of visits to an arbitrary set $$A$$ is infinite), or even **Harris recurrent** (that is, such that the probability of an infinite number of returns to $A$ is 1).
 
 **Harris recurrence** ensures that the chain has the same limiting behavior for every starting value instead of almost every starting value.
 
@@ -70,7 +70,7 @@ $$
 \binom{m+n}{r}=\sum_{k=0}^r\binom{m}{k}\binom{n}{r-k}
 $$
 
-with $$m=n=r=K$$. It turns out that the hypergeometric distribution $H(2K,K,1/2)$ is the [invariant distribution](def_invariant.png) for the Bernoulli-Laplace model.
+with $$m=n=r=K$$. It turns out that the hypergeometric distribution $$H(2K,K,1/2)$$ is the [invariant distribution](def_invariant.png) for the Bernoulli-Laplace model.
 
 
 
@@ -79,7 +79,7 @@ with $$m=n=r=K$$. It turns out that the hypergeometric distribution $H(2K,K,1/2)
 A simple illustration of Markov chains on continuous state-space. 
 
 $$
-X_n = \theta X_{n-1}+\varepsilon_n\;\theta\in \mathrm{I\!R}\,,
+X_n = \theta X_{n-1}+\varepsilon_n\;,\theta\in \mathrm{I\!R}\,,
 $$
 
 with $$\varepsilon_n\in N(0,\sigma^2)$$, and if the $$\varepsilon_n$$'s are independent, $$X_n$$ is indeed independent from $$X_{n-2},X_{n-3},\ldots$$ conditionally on $$X_{n-1}$$.
@@ -110,7 +110,7 @@ $$
 K^1(x,A)\ge \nu_1(A),\qquad \forall x\in C, \forall A\in {\cal B(X)}\,.
 $$
 
-Given that the transition kernel corresponds to the $N(\theta x_{n-1},\sigma^2)$ distribution, a normal distribution $N(\mu,\tau^2)$ is stationary for the AR(1) chain only if 
+Given that the transition kernel corresponds to the $$N(\theta x_{n-1},\sigma^2)$$ distribution, a normal distribution $$N(\mu,\tau^2)$$ is stationary for the AR(1) chain only if 
 
 $$
 \mu=\theta\mu\qquad\text{and}\qquad \tau^2=\tau^2\theta^2+\sigma^2\,.
