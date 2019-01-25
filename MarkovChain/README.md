@@ -1,6 +1,6 @@
 ## Essential properties of Markov Chain
 
-In the setup of MCMC algorithms, we construct Markov chains from a transition kernel $K$, a conditional probability density such that $X_{n+1}\sim K(X_n,X_{n+1})$.
+In the setup of MCMC algorithms, we construct Markov chains from a transition kernel $K$, a conditional probability density such that $$X_{n+1}\sim K(X_n,X_{n+1})$$.
 
 The chain encountered in MCMC settings enjoy a very strong stability property, namely a **stationary probability distribution**; that is, a distribution $\pi$ such that if $X_n\sim\pi$, then $X_{n+1}\sim \pi$, if the kernel $K$ allows for free moves all over the state space. This freedom is called **irreducibility** in the theory of Markov chains and is formalized as the existence of $n\in\mathbb{N}$ such that $P(X_n\in A\mid X_0)>0$ for every $A$ such that $\pi(A)>0$. This property also ensures that most of the chains involved in MCMC algorithms are **recurrent** (that is, that the average number of visits to an arbitrary set $A$ is infinite), or even **Harris recurrent** (that is, such that the probability of an infinite number of returns to $A$ is 1).
 
