@@ -14,7 +14,7 @@
 
 ## Simulated Annealing
 
-Fundamental idea: A change of scale, called **temperature**, allows for faster moves on the surface of the function of $h$ to maximize, whose negative is called **energy**.
+Fundamental idea: A change of scale, called **temperature**, allows for faster moves on the surface of the function of $$h$$ to maximize, whose negative is called **energy**.
 
 ![](simulated-annealing.png)
 
@@ -56,6 +56,6 @@ for t = 1:(N-1)
 end
 ```
 
-The trajectory of 2500 pairs $(x^{(t)}, y^{(t)})$ is 
+The trajectory of 2500 pairs $$(x^{(t)}, y^{(t)})$$ is 
 
 ![](ex-sim-ann.png)
