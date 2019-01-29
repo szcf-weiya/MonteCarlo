@@ -274,4 +274,4 @@ If $$n=100$$,
 | $$(25.52361,\infty)$$ | 0.05| 0.0516 |
 | $$(26.17395,\infty)$$ | 0.01| 0.0093 |
 
-Note that if $$X_i\sim \chi^2_p(\lambda)$$, then $n\bar X=\sum X_i\sim \chi^2_{np}(n\lambda)$.
+Note that if $$X_i\sim \chi^2_p(\lambda)$$, then $$n\bar X=\sum X_i\sim \chi^2_{np}(n\lambda)$$.
