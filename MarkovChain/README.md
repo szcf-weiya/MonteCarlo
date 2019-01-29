@@ -21,6 +21,7 @@ Ergodicity: independence of initial conditions
 - [geometrically h-ergodic](def_geometrical_h_ergodic.png): decreasing at least at a geometric speed.
 - [uniform ergodicity](def_uniform_ergodic.png): stronger than geometric ergodicity in the sense that the rate of geometric convergence must be uniform over the whole space.
 
+Irreducibility + Aperiodic = Ergodicity ?
 
 ## Basic Notions
 
