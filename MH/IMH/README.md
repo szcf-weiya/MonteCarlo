@@ -163,3 +163,27 @@ plot(p1, p2, layout = (1,2))
 ```
 
 ![](logit_params_trace.png)
+
+
+## Saddlepoint tail area approximation
+
+If $$K(\tau) = \log({\mathbb E}\exp(\tau X))$$ is the [cumulant generating function](https://en.wikipedia.org/wiki/Cumulant), solving the saddlepoint equation $$K'(\tau)=x$$ yields the saddlepoint. For noncentral chi squared random variable $$X$$, the moment generating function is 
+
+$$
+\phi_X(t) = \frac{\exp(2\lambda t/(1-2t))}{(1-2t)^{p/2}}\,,
+$$
+
+where $$p$$ is the number of degrees of freedom and $$\lambda$$ is the noncentrality parameter, and its saddlepoint is 
+
+$$
+\hat\tau(x) = \frac{-p+2x-\sqrt{p^2+8\lambda x}}{4x}\,.
+$$
+
+The saddlepoint can be used to approximate the tail area of a distribution. We have the approximation
+
+$$
+\begin{aligned}
+P(\bar X>a) &= \int_a^\infty \Big(\frac{n}{2\pi K_X''(\hat\tau(x))}\Big)^{1/2}\exp\{n[K_X(\hat\tau(x))-\hat\tau(x)x]\}dx\\
+&= \int_{\hat\tau(a)}^{1/2} \Big(\frac{n}{2\pi}\Big)^{1/2}[K_X''(t)]^{1/2}\exp\{n[K_X(t)-tK_X'(t)]\}dt\,.
+\end{aligned}
+$$

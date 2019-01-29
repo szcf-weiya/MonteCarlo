@@ -25,7 +25,7 @@ function mh_logit(T::Int, α_hat::Float64, β_hat::Float64, σ_hat::Float64)
     for t = 1:T-1
         α = log(rand(π))
         β = rand(φ)
-        r = ( ll(α, β) / ll(Α[t], Β[t]) ) * ( pdf(φ, β) / pdf(φ, Β[t]) )
+        r = ( ll(α, β) / ll(Α[t], Β[t]) ) * ( pdf(φ, Β[t]) / pdf(φ, β) )
         if rand() < r
             Α[t+1] = α
             Β[t+1] = β
@@ -37,12 +37,27 @@ function mh_logit(T::Int, α_hat::Float64, β_hat::Float64, σ_hat::Float64)
     return Α, Β
 end
 
+# trace plot
+
 Α, Β = mh_logit(10000, 15.04, -0.233, 0.108)
 
 p1 = plot(Α, legend = false, xlab = "Intercept")
 hline!([15.04])
 
 p2 = plot(Β, legend = false, xlab = "Slope")
+hline!([-0.233])
+
+plot(p1, p2, layout = (1,2))
+
+# mean trace plot
+
+Αmean = cumsum(Α) ./ collect(1:length(Α))
+Βmean = cumsum(Β) ./ collect(1:length(Β))
+
+p1 = plot(Αmean, legend = false, xlab = "Intercept")
+hline!([15.04])
+
+p2 = plot(Βmean, legend = false, xlab = "Slope")
 hline!([-0.233])
 
 plot(p1, p2, layout = (1,2))
