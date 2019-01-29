@@ -172,6 +172,28 @@ end
 
 ## ARS Algorithm
 
+ARS is based on the construction of an envelope and the derivation of a corresponding Accept-Reject algorithm. It provides a sequential evaluation of lower and upper envelopes of the density $$f$$ when $$h=\log f$$ is concave.
+
+Let $${\cal S}_n$$ be a set of points $$x_i,i=0,1,\ldots,n+1$$, in the support of $$f$$ such that $$h(x_i)=\log f(x_i)$$ is known up to the same constant. Given the concavity of $$h$$, the line $$L_{i,i+1}$$ through $$(x_i,h(x_i))$$ and $$(x_{i+1},h(x_{i+1}))$$ is below the graph of $$h$$ in $$[x_i,x_{i+1}]$$ and is above this graph outside this interval.
+
+For $$x\in [x_i,x_{i+1}]$$, define 
+
+$$
+\bar h_n(x)=\min\{L_{i-1,i}(x),L_{i+1,i+2}(x)\}\quad\text{and}\quad \underline h_n(x)=L_{i,i+1}(x)\,,
+$$
+
+the envelopes are 
+
+$$
+\underline h_n(x)\le h(x)\le \bar h_n(x)
+$$
+
+uniformly on the support of $$f$$. Thus,
+
+$$
+\exp \underline h_n(x) = \underline f_n(x) \le f(x)\le \bar f_n(x)=\exp\bar h_n(x) = \bar w_ng_n(x)\,.
+$$
+
 ![](ars.png)
 
 [Davison (2008)](http://www.cambridge.org/hk/academic/subjects/statistics-probability/statistical-theory-and-methods/statistical-models) provides another version of ARS 
@@ -182,7 +204,7 @@ and gives an illustration example.
 
 ![](stat-model-ex-3-22.png)
 
-Let's consider the slightly simple verison in which we do not need to consider $h_-(y)$. It is obvious that
+Let's consider the slightly simple verison in which we do not need to consider $$h_-(y)$$. It is obvious that
 
 ![](ars-2-eq1.png)
 
