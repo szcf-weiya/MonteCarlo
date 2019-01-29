@@ -63,3 +63,43 @@ hline!([8.33], label="True value")
 ```
 
 ![](comparison_gamma.png)
+
+## Logistic Regression
+
+We observe $$(x_i,y_i),i=1,\ldots,n$$ according to the model
+
+$$
+Y_i\sim\mathrm{Bernoulli}(p(x_i))\,,\qquad p(x) = \frac{\exp(\alpha+\beta x)}{1+\exp(\alpha+\beta x)}\,.
+$$
+
+The likelihood is 
+
+$$
+L(\alpha,\beta\mid \mathbf y) \propto \prod_{i=1}^n \Big(\frac{\exp(\alpha+\beta x_i)}{1+\exp(\alpha+\beta x_i)}\Big)^{y_i}\Big(\frac{1}{1+\exp(\alpha+\beta x_i)}\Big)^{1-y_i}
+$$
+
+and let $$\pi(e^\alpha)\sim \mathrm{Exp}(1/b)$$ and put a flat prior on $$\beta$$, i.e.,
+
+$$
+\pi_\alpha(\alpha\mid b)\pi_\beta(b) = \frac 1b e^{-e^\alpha/b}de^\alpha d\beta=\frac 1b e^\alpha e^{-e^\alpha/b}d\alpha d\beta\,.
+$$
+
+Note that 
+
+$$
+\begin{aligned}
+\mathrm{E}[\alpha] &= \int_{-\infty}^\infty \frac{\alpha}{b}e^\alpha e^{-e^\alpha/b}d\alpha\\
+&=\int_0^\infty \log w\frac 1b e^{-w/b} \\
+&=\log b -\gamma\,,
+\end{aligned}
+$$
+
+where 
+
+$$
+\gamma = -\int_0^\infty e^{-x}\log xdx
+$$
+
+is the [Euler's Constant](https://en.wikipedia.org/wiki/Euler–Mascheroni_constant). 
+
+Choose the data-dependent value that makes $$\mathrm{E}\alpha=\hat\alpha$$, where $$\hat \alpha$$ is the MLE of $$\alpha$$, so $$\hat b=\exp(\hat \alpha+\gamma)$$.
