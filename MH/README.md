@@ -57,6 +57,14 @@ In the following sections, let's introduce other versions of Metropolis-Hastings
 
 ![](imh.png)
 
+If there exists a constant $$M$$ such that 
+
+$$
+f(x) \le Mg(x)\,,\qquad \forall x\in \mathrm{supp}\;f\,,
+$$
+
+the algorithm produces a uniformly ergodic chain ([Theorem](thm_imh.png)), and the expected acceptance probability associated with the algorithm is at least $$1/M$$ when the chain is stationary, and in that sense, the IMH is more efficient than the Accept-Reject algorithm.
+
 Let's illustrate this algorithm with $${\mathcal G}a(\alpha, 1)$$. We have introduced how to sample from Gamma distribution via Accept-Reject algorithm in [Special Distributions](https://mc.hohoweiya.xyz/genrv/special), and it is straightforward to get the Gamma Metropolis-Hastings based on the ratio of $$f/g$$,
 
 ![](gamma_imh.png)
