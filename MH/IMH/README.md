@@ -103,3 +103,21 @@ $$
 is the [Euler's Constant](https://en.wikipedia.org/wiki/Euler–Mascheroni_constant). 
 
 Choose the data-dependent value that makes $$\mathrm{E}\alpha=\hat\alpha$$, where $$\hat \alpha$$ is the MLE of $$\alpha$$, so $$\hat b=\exp(\hat \alpha+\gamma)$$.
+
+We can use MLE to estimate the coefficient in the logistical model (see [my post](https://stats.hohoweiya.xyz/2017/07/30/Estimate-Parameters-in-Logistic-Regression/) for the derivation), and the following Julia code can help us fit the model quickly.
+
+```julia
+using DataFrames, GLM, Plots
+
+temp = [53, 57, 58, 63, 66, 67, 67, 67, 68, 69, 70, 70, 70, 70, 72, 73, 75, 75, 76, 76, 78, 79, 81]
+failure = [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+data = DataFrame(temp = temp, failure = failure)
+logit_fit = glm(@formula(failure ~ temp), data, Binomial(), LogitLink())
+plot(temp, predict(logit_fit), legend = false, xlabel = "Temperature", ylab = "Probability")
+scatter!(temp, predict(logit_fit))
+```
+
+We can obtain the estimates of the parameters: $$\hat\alpha=15.0479, \hat\beta=-0.232163$$, and the following plot.
+
+![](fit_logit.png)
+
