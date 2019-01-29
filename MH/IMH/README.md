@@ -259,8 +259,9 @@ I can successfully reproduce the results.
 
 If $$n=1$$,
 
-| --- | ---- | ---|
+
 | Interval | `1 - pchisq(x, 6, 9*2)` | IMH | 
+| --- | ---- | ---|
 | $(36.225,\infty)$ | 0.1000076 | 0.1037 |
 | $(40.542,\infty)$ | 0.05000061| 0.0516 |
 | $(49.333,\infty)$ | 0.01000057| 0.0114 |
@@ -273,4 +274,4 @@ If $$n=100$$,
 | $(25.52361,\infty)$ | 0.05| 0.0516 |
 | $(26.17395,\infty)$ | 0.01| 0.0093 |
 
-Note that if $$X_i\sim \chi^2_p(\lambda)$$, then $n\bar X\sim \chi^2_{np}(n\lambda)$.
+Note that if $$X_i\sim \chi^2_p(\lambda)$$, then $n\bar X=\sum X_i\sim \chi^2_{np}(n\lambda)$.
