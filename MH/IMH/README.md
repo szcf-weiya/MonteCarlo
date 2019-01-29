@@ -266,7 +266,15 @@ If $$n=1$$,
 | $$(40.542,\infty)$$ | 0.05000061| 0.0516 |
 | $$(49.333,\infty)$$ | 0.01000057| 0.0114 |
 
-If $$n=100$$,
+For $$n=100$$, note that if $$X_i\sim \chi^2_p(\lambda)$$, then $$n\bar X=\sum X_i\sim \chi^2_{np}(n\lambda)$$, then we can use the following R code to figure out the cutpoints.
+
+```r
+qchisq(0.90, 600, 1800)/100
+qchisq(0.95, 600, 1800)/100
+qchisq(0.99, 600, 1800)/100
+```
+
+Then use these cutpoints to estimate the probability by using samples produced from independent MH algorithm.
 
 | Interval | `1 - pchisq(x*100, 6*100, 9*2*100)` | IMH | 
 | --- | ---- | ---|
@@ -274,4 +282,3 @@ If $$n=100$$,
 | $$(25.52361,\infty)$$ | 0.05| 0.0516 |
 | $$(26.17395,\infty)$$ | 0.01| 0.0093 |
 
-Note that if $$X_i\sim \chi^2_p(\lambda)$$, then $$n\bar X=\sum X_i\sim \chi^2_{np}(n\lambda)$$.
