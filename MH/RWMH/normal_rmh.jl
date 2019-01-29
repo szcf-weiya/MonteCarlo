@@ -40,10 +40,11 @@ using Statistics
 ps = []
 for i = 1:3
     x = rmh(N, deltalist[i], dnorm)
-    push!(ps, plot(x, legend=:none))
+    push!(ps, plot(x, legend=false))
     muvar[i, 1] = mean(x)
     muvar[i, 2] = var(x)
 end
 # plot
+using Plots
 plot(ps[1], ps[2], ps[3], layout=(3,1))
 savefig("res_rmh.png")
