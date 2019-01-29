@@ -53,56 +53,6 @@ In the following sections, let's introduce other versions of Metropolis-Hastings
 
 ## Independent Metropolis-Hastings
 
-[Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715) presents the following algorithm:
-
-![](imh.png)
-
-If there exists a constant $$M$$ such that 
-
-$$
-f(x) \le Mg(x)\,,\qquad \forall x\in \mathrm{supp}\;f\,,
-$$
-
-the algorithm produces a uniformly ergodic chain ([Theorem](thm_imh.png)), and the expected acceptance probability associated with the algorithm is at least $$1/M$$ when the chain is stationary, and in that sense, the IMH is more efficient than the Accept-Reject algorithm.
-
-Let's illustrate this algorithm with $${\mathcal G}a(\alpha, 1)$$. We have introduced how to sample from Gamma distribution via Accept-Reject algorithm in [Special Distributions](https://mc.hohoweiya.xyz/genrv/special), and it is straightforward to get the Gamma Metropolis-Hastings based on the ratio of $$f/g$$,
-
-![](gamma_imh.png)
-
-And we can implement this algorithm with the Julia code:
-
-```julia
-## Julia program for Gamma Metropolis-Hastings
-## author: weiya <szcfweiya@gmail.com>
-## date: 2018-08-21
-
-## import function gamma_int
-include("../GenRV/gamma.jl")
-
-function mh_gamma(T = 100, alpha = 1.5)
-    a = Int(floor(alpha))
-    b = a/alpha
-    x = ones(T+1) # initial value: 0 
-    for t = 1:T
-        yt = rgamma_int(a, 1)
-        rt = (yt / x[t] * exp((x[t] - yt) / alpha))^(alpha-a)
-        if rt >= 1
-            x[t+1] = yt
-        else
-            u = rand()
-            if u < rt
-                x[t+1] = yt
-            else
-                x[t+1] = x[t]
-            end
-        end   
-    end
-    return(x)
-end
-
-# example
-mh_gamma()
-```
 
 ## Random walk Metropolis-Hastings
 

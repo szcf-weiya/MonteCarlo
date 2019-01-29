@@ -6,6 +6,16 @@ Firstly, let's introduce how to generate $${\mathcal G}a(a,\beta)$$ where $$a$$ 
 
 ![](ex-2-2-1.png)
 
+**Attention!** The parameter in (2.2.1) is scale parameter, thus the code to sample is 
+
+```julia
+## sample from Ga(a, beta)
+function rgamma_int(a::Int, beta)
+    u = rand(a)
+    return(-1.0 / beta * sum(log.(u)))
+end
+```
+
 Then when considering the general $${\mathcal G}a(\alpha,\beta)$$, we can use $${G}a(a, b)$$ as instrumental distribution in Accept-Rejection algorithm as mentioned in [Robert and Casella (2013)](https://www.springer.com/gp/book/9781475730715):
 
 ![](ex-3-3-7.png)

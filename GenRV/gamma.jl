@@ -5,7 +5,7 @@
 ## sample from Ga(a, beta)
 function rgamma_int(a::Int, beta)
     u = rand(a)
-    return(-1.0 * beta * sum(log.(u)))
+    return(-1.0 / beta * sum(log.(u)))
 end
 
 ## density of Ga(alpha, beta)
@@ -18,7 +18,8 @@ end
 function rgamma(alpha = 1.5, beta = 2.1)
     a = Int(floor(alpha))
     b = a * beta / alpha
-    M = exp(a * (log(a) - 1) - alpha * (log(alpha) - 1))
+    #M = exp(a * (log(a) - 1) - alpha * (log(alpha) - 1))
+    M = exp(alpha * (log(alpha) - 1) - a * (log(a) - 1))
     while true
         x = rgamma_int(a, b)
         u = rand()

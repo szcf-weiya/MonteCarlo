@@ -14,6 +14,7 @@
     * [MCMC diagnostics](MCMC/MCMCdiagnostics.md)
 * [Metropolis](Metropolis/README.md)
 * [Metropolis-Hastings](MH/README.md)
+    * [Independent MH](MH/IMH/README.md)
 * [PBMCMC](PBMCMC/README.md)
 * [RJMCMC](RJMCMC/README.md)
 * [Diagnosing Convergence](DC/README.md)
