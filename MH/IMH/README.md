@@ -184,6 +184,93 @@ The saddlepoint can be used to approximate the tail area of a distribution. We h
 $$
 \begin{aligned}
 P(\bar X>a) &= \int_a^\infty \Big(\frac{n}{2\pi K_X''(\hat\tau(x))}\Big)^{1/2}\exp\{n[K_X(\hat\tau(x))-\hat\tau(x)x]\}dx\\
-&= \int_{\hat\tau(a)}^{1/2} \Big(\frac{n}{2\pi}\Big)^{1/2}[K_X''(t)]^{1/2}\exp\{n[K_X(t)-tK_X'(t)]\}dt\,.
+&= \int_{\hat\tau(a)}^{1/2} \Big(\frac{n}{2\pi}\Big)^{1/2}[K_X''(t)]^{1/2}\exp\{n[K_X(t)-tK_X'(t)]\}dt\\
+&\approx \frac 1m\sum_{i=1}^m\mathbb{I}[Z_i>\hat \tau(a)]\,,
 \end{aligned}
 $$
+
+where $$Z_i$$ is the sample from the saddlepoint distribution. Using a Taylor series approximation,
+
+$$
+\exp\{n[K_X(t)-tK_X'(t)]\}\approx \exp\Big\{-nK''_X(0)\frac{t^2}{2}\Big\}\,,
+$$
+
+so the instrumental density can be chosen as $$N(0,\frac{1}{nK_X''(0)})$$, where 
+
+$$
+K_X''(t)=\frac{2[p(1-2t) + 4\lambda]}{(1-2t)^3}\,.
+$$
+
+I implemented the independent MH algorithm via the following code to produce random variables from the saddlepoint distribution.
+
+```julia
+using Distributions
+
+p = 6
+λ = 9
+
+function K(t)
+    return 2λ*t / (1-2t) - p / 2 * log(1-2t)
+end
+
+function D1K(t)
+    return ( 4λ*t ) / (1-2t)^2 + ( 2λ + p ) / ( 1 - 2t )
+end
+
+function D2K(t)
+    return 2(p*(1-2t) + 4λ) / (1-2t)^3
+end
+
+function logf(n, t)
+    return n * (K(t) - t*D1K(t)) + 0.5log(D2K(t))
+end
+
+function logg(n, t)
+    return -1n * D2K(0) * t^2/2
+end
+
+function mh_saddle(T::Int = 10000; n::Int = 1)
+    Z = zeros(T)
+    g = Normal(0, 1 / sqrt(n*D2K(0)))
+    for t = 1:T-1
+        z = rand(g)
+        logr = logf(n, z) - logf(n, Z[t]) + logg(n, Z[t]) - logg(n, z)
+        if log(rand()) < logr 
+            Z[t+1] = z
+        else
+            Z[t+1] = Z[t]
+        end
+    end
+    return Z
+end
+
+Z = mh_saddle(n = 1)
+
+function tau(x)
+    return ( -1p + 2x - sqrt(p^2 + 8λ * x) ) / (4x)
+end
+
+println(sum(Z .> tau(36.225)) / 10000)
+println(sum(Z .> tau(40.542)) / 10000)
+println(sum(Z .> tau(49.333)) / 10000)
+```
+
+I can successfully reproduce the results.
+
+If $$n=1$$,
+
+| --- | ---- | ---|
+| Interval | `1 - pchisq(x, 6, 9*2)` | IMH | 
+| $(36.225,\infty)$ | 0.1000076 | 0.1037 |
+| $(40.542,\infty)$ | 0.05000061| 0.0516 |
+| $(49.333,\infty)$ | 0.01000057| 0.0114 |
+
+If $$n=100$$,
+
+| --- | ---- | ---|
+| Interval | `1 - pchisq(x*100, 6*100, 9*2*100)` | IMH | 
+| $(25.18054,\infty)$ | 0.10 | 0.1045 |
+| $(25.52361,\infty)$ | 0.05| 0.0516 |
+| $(26.17395,\infty)$ | 0.01| 0.0093 |
+
+Note that if $$X_i\sim \chi^2_p(\lambda)$$, then $n\bar X\sim \chi^2_{np}(n\lambda)$.
