@@ -117,7 +117,49 @@ plot(temp, predict(logit_fit), legend = false, xlabel = "Temperature", ylab = "P
 scatter!(temp, predict(logit_fit))
 ```
 
-We can obtain the estimates of the parameters: $$\hat\alpha=15.0479, \hat\beta=-0.232163$$, and the following plot.
-
 ![](fit_logit.png)
 
+The estimates of the parameters are $$\hat\alpha=15.0479, \hat\beta=-0.232163$$ and $$\hat\sigma_\beta = 0.108137$$. 
+
+Wrote the following Julia code to implement the independent MH algorithm,
+
+```julia
+## metropolis-hastings
+using Distributions
+γ = 0.57721
+function ll(α::Float64, β::Float64)
+    a = exp.(α .+ β*temp)
+    return prod( (a ./ (1 .+ a) ).^failure .* (1 ./ (1 .+ a)).^(1 .- failure) )
+end
+function mh_logit(T::Int, α_hat::Float64, β_hat::Float64, σ_hat::Float64)
+    φ = Normal(β_hat, σ_hat)
+    π = Exponential(exp(α_hat+γ))
+    Α = ones(T)
+    Β = ones(T)
+    for t = 1:T-1
+        α = log(rand(π))
+        β = rand(φ)
+        r = ( ll(α, β) / ll(Α[t], Β[t]) ) * ( pdf(φ, β) / pdf(φ, Β[t]) )
+        if rand() < r
+            Α[t+1] = α
+            Β[t+1] = β
+        else
+            Α[t+1] = Α[t]
+            Β[t+1] = Β[t]
+        end
+    end
+    return Α, Β
+end
+
+Α, Β = mh_logit(10000, 15.04, -0.233, 0.108)
+
+p1 = plot(Α, legend = false, xlab = "Intercept")
+hline!([15.04])
+
+p2 = plot(Β, legend = false, xlab = "Slope")
+hline!([-0.233])
+
+plot(p1, p2, layout = (1,2))
+```
+
+![](logit_params_trace.png)
