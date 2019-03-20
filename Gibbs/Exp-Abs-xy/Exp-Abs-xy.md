@@ -9,8 +9,8 @@ $$
 
 Gibbs: 
 
-- $f(x\mid y)\propto \exp(-\vert x\vert - a\vert y-x\vert)$
-- $f(y\mid x)\propto \exp(-\vert y\vert - a\vert y-x\vert)$
+- $$f(x\mid y)\propto \exp(-\vert x\vert - a\vert y-x\vert)$$
+- $$f(y\mid x)\propto \exp(-\vert y\vert - a\vert y-x\vert)$$
 
 ### Accept-Reject
 
