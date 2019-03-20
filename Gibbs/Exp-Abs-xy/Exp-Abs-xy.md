@@ -165,8 +165,53 @@ plot(x, y, seriestype = :scatter, legend = false)
 ```
 
 
-
-
 ![svg](output_12_0.svg)
 
+## Slice Sampling
 
+$$
+f(x, y)\propto \exp(-\vert x\vert - \vert y\vert - a\vert x- y\vert) = \int_0^\infty \mathbb{I}_{u_1\le\exp(-\vert x\vert)}du_1\int_0^\infty \mathbb{I}_{u_2\le\exp(-\vert y\vert)}du_2\int_0^\infty \mathbb{I}_{u_3\le\exp(-a\vert x-y\vert)}du_3
+$$
+
+Then
+
+$$
+\begin{align*}
+x|y,u_1,u_2,u_3&\sim f(x|y,u_1,u_2,u_3)\propto\mathbb{I}_{u_1\le\exp\{-|x|\}}\mathbb{I}_{u_3\le\exp\{-a|x-y|\}}\\
+y|x,u_1,u_2,u_3&\sim f(y|x,u_1,u_2,u_3)\propto\mathbb{I}_{u_2\le\exp\{-|y|\}}\mathbb{I}_{u_3\le\exp\{-a|x-y|\}}\\
+u_1|x&\sim\mathcal U(0,\exp\{-|x|\})\\
+u_3|x,y&\sim\mathcal U(0,\exp\{-a|x-y|\})\\
+u_2|y&\sim\mathcal U(0,\exp\{-|x|\})\\
+\end{align*}
+$$
+
+It is straightforward to use the following Julia program to simulate.
+
+```julia
+using Distributions
+a = 10
+N = 1000
+x = ones(N)
+y = ones(N)
+for t = 2:N
+    u1 = rand() * exp(-abs(x[t-1]))
+    u2 = rand() * exp(-abs(y[t-1]))
+    u3 = rand() * exp(-a*abs(x[t-1]-y[t-1]))
+    x[t] = rand(Uniform(log(u1), -log(u1)))
+    while a*abs(x[t]-y[t-1]) > -log(u3)
+        x[t] = rand(Uniform(log(u1), -log(u1)))
+    end 
+    y[t] = rand(Uniform(log(u2), -log(u2)))
+    while a*abs(x[t]-y[t]) > -log(u3)
+        y[t] = rand(Uniform(log(u2), -log(u2)))
+    end
+end
+using Plots
+plot(x, y, seriestype=:scatter, legend=false)
+```
+
+![](res_slice_sampling.svg)
+
+## Reference
+
+[Conditional distribution of $\exp(-|x|-|y|-a \cdot |x-y|)$ - Cross Validated](https://stats.stackexchange.com/questions/390680/conditional-distribution-of-exp-x-y-a-cdot-x-y/390745#)
