@@ -1,3 +1,21 @@
+## Bayesian Model Choice
+
+![](assets/def-1.png)
+
+![](assets/def-2.png)
+
+![](assets/def-3.png)
+
+## Green's algorithm
+
+![](assets/alg-green.png)
+
+![](assets/linear-jacobian.png)
+
+## Fixed Dimension Reassessment
+
+![](assets/fixed-dims-reassess.png)
+
 ## RJMCMC for change points
 
 The log-likelihood function is 
