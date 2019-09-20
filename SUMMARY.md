@@ -3,6 +3,7 @@
 * [AIS](AIS/README.md)
 * [Generate R.V.](GenRV/README.md)
     * [Special Distribution](GenRV/special.md)
+    * [Copulas](GenRV/copulas/An-intuitive-visual-guide-to-copulas.md)
 * [Gibbs](Gibbs/README.md)
     * [Comparing two groups](Gibbs/group-comparison.md)
     * [Linear Regression](Gibbs/linear/README.md)
