@@ -23,6 +23,12 @@ $$
 X=\min\{X_1,X_2\}\qquad X_1\sim F_1\,,X_2\sim F_2
 $$
 
+since
+
+$$
+F(x) = P(X\le x) = 1- P(X > x)  = 1-P(X_1 > x)P(X_2 > x) = 1-(1-F_1(X))(1-F_2(X))\,.
+$$
+
 Thus, the R code to simulate is simple to be
 
 ```r
