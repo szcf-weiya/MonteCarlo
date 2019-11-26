@@ -3,20 +3,24 @@
 ## Recall: Rao-Blackwell Theorem
 
 ![](rao-blackwell-thm.png)
+(Lehmann & Casella, 1998)
 
 **Rao-Blackwellization** is that
 
 ![](rao-blackwellization.png)
+(Robert & Casella, 2005)
 
 ## Example: Student's $$t$$ expectation
 
 ![](t-dist.png)
+(Robert & Casella, 2005)
 
 Here Gamma is in (α, β) form.
 
 Alternative way to look at such decomposition
 
 ![](t-dist2.png)
+(Robert & Casella, 2010)
 
 Compare the performance with two cases,
 
