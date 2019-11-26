@@ -12,6 +12,7 @@
 * [Markov Chain](MarkovChain/README.md)
 * [MC Approximation](MCApproximation/README.md)
 * [MC Integration](MCIntegration/README.md)
+    * [Rao-Blackwellization](MCIntegration/Rao-Blackwell/README.md)
 * [MC Optimization](MCOptim/README.md)
 * [MCMC](MCMC/README.md)
     * [MCMC diagnostics](MCMC/MCMCdiagnostics.md)
