@@ -1,0 +1,90 @@
+# adapt from mcsm's randogit.R (https://github.com/cran/mcsm/blob/master/R/randogit.R)
+rm(list = ls())
+Tmc = 10^2
+
+## Random effect logit model
+beta0 = -3
+sigma0 = 1
+n = 20 # num of individuals
+m = 35 # num of replicas
+
+## simulated data
+x = matrix(sample(c(-1, 0, 1), n*m, replace = TRUE), nrow = n)
+y = matrix(0, ncol = m, nrow = n)
+tru = rnorm(n)
+for (i in 1:n)
+  y[i,] = (runif(m) < 1/(1 + exp(-beta0 * x[i,] - tru[i]))) # trick: e^z / (1 + e^z) = 1 / (1 + e^(-z))
+
+## reference value without random effects
+## i.e., the MLE of beta when there is no random effect
+mlan = as.numeric(glm(as.vector(y) ~ as.vector(x) - 1, family = binomial)$coef) # force no intercept via y ~ x - 1 or y ~ 0 + x (see ?glm -> ?formula)
+
+## target function
+targ = function(beta, omegas, Tmc) {
+  xs = exp(beta * x)
+  xxs = x * xs
+  losprod = 0
+  for (j in 1:m) for (t in 1:Tmc)
+    losprod = losprod + sum(xxs[,j] * omegas[, t] / (1 + xs[,j] * omegas[,t])) # sum all replicas
+  
+  # find the root
+  losprod - Tmc*sum(x*y) # Tmc is due to summation over all replicas
+}
+
+## MC likelihood function
+likecomp = function(beta, sigma) {
+  # treat u as obs.
+  exp(sum(as.vector(y) * (beta * as.vector(x) + rep(tru, m))) - 
+      sum(log(1 + exp(beta * as.vector(x) + rep(tru, m)))))
+}
+
+## function for MCMC (eq. 5.15)
+gu = function(mu, i, beta, sigma) {
+  sum((y[i,] * (beta * x[i,] + mu)) - 
+      log(1 + exp(beta * x[i,] + mu))) - 0.5*mu^2 / sigma^2
+}
+
+## MCEM iterations
+beta = mlan
+sigma = sigma0
+
+diff = iter = factor = 1
+lval = likecomp(beta, sigma)
+while (diff > 10^(-2)) {
+  # simulate u's by MCMC
+  samplu = matrix(tru, ncol = Tmc, nrow = n)
+  acpt = 0
+  for (t in 2:Tmc){
+    u = rnorm(n)
+    for (i in 1:n) {
+      # proposal
+      u[i] = factor * sigma[iter] * u[i] + samplu[i, t-1]
+      # NB: different from the original code
+      # factor seems only related to the proposal step
+      if (log(runif(1)) > gu(u[i], i, beta[iter], sigma[iter]) - gu(samplu[i,t-1], i, beta[iter], sigma[iter]))
+        u[i] = samplu[i, t-1]
+      else
+        acpt = acpt + 1
+    }
+    samplu[, t] = u
+  }
+  
+  if (acpt < .1*Tmc) factor = factor/3
+  if (acpt > .9*Tmc) factor = factor*3
+  
+  ## EM equation
+  sigma = c(sigma, sd(as.vector(samplu)))
+  
+  omegas = exp(samplu)
+  beta = c(beta, uniroot(targ, omegas = omegas, Tmc = Tmc, interval = mlan + 10*sigma[iter+1]*c(-1, 1))$root)
+  lval = c(lval, likecomp(beta[iter + 1], sigma[iter + 1]))
+  
+  diff = max(abs(diff(beta[iter:(iter+1)])), abs(diff(sigma[iter:(iter+1)]))) # interestingly! diff can be numeric and function simultaneously!
+  iter = iter + 1
+  Tmc = Tmc*2
+  cat("iter =", iter, ", diff =", diff, "\n")
+}
+
+par(mfrow = c(2, 1))
+plot(beta, sigma, pch = 19, xlab = expression(beta), ylab = expression(sigma))
+plot(lval, type = "l", xlab = "iter", ylab = expression(L^c))
