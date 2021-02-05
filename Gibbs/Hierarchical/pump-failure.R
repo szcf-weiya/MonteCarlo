@@ -1,4 +1,7 @@
-# adapt from mcsm's Chapter.7.R (https://github.com/cran/mcsm/blob/master/demo/Chapter.7.R)
+##
+## adapt from mcsm's Chapter.7.R (https://github.com/cran/mcsm/blob/master/demo/Chapter.7.R)
+##               and kscheck.R (https://github.com/cran/mcsm/blob/master/R/kscheck.R)
+##
 rm(list = ls())
 xdata = c(5, 1, 5, 14, 3, 19, 1, 1, 4, 22)
 time = c(94.32, 15.72, 62.88, 125.76, 5.24, 31.44, 1.05, 1.05, 2.10, 10.48)
