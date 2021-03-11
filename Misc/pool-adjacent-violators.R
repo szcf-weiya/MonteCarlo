@@ -2,7 +2,7 @@
 ## author: weiya <szcfweiya@gmail.com>
 ## date: 2018-08-19
 
-pooladv <- function(f, w)
+pooladv <- function(f, w = rep(1, length(f)))
 {
   n = length(f)
   lag = diff(f)
@@ -22,7 +22,7 @@ pooladv <- function(f, w)
 # https://stackoverflow.com/questions/2968220/is-there-an-r-equivalent-of-the-pythonic-if-name-main-main
 if (sys.nframe() == 0) {
   ## example
-  print(pooladv(c(23, 27, 25, 28), rep(1, 4)))
+  print(pooladv(c(23, 27, 25, 28)))
   # ans: 23, 26, 26, 28
   # compare with Iso package
   library(Iso)
