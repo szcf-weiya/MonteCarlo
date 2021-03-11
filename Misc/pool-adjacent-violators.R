@@ -19,6 +19,12 @@ pooladv <- function(f, w)
   }
 }
 
-## example
-pooladv(c(23, 27, 25, 28), rep(1, 4))
-# ans: 23, 26, 26, 28
+# https://stackoverflow.com/questions/2968220/is-there-an-r-equivalent-of-the-pythonic-if-name-main-main
+if (sys.nframe() == 0) {
+  ## example
+  print(pooladv(c(23, 27, 25, 28), rep(1, 4)))
+  # ans: 23, 26, 26, 28
+  # compare with Iso package
+  library(Iso)
+  print(pava(c(23, 27, 25, 28)))
+}
