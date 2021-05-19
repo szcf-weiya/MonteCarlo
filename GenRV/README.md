@@ -345,7 +345,7 @@ Based on the ARS algorithm, we can also get the Supplemental ARS algorithm:
 
 ![](s-ars.png)
 
-## Generate Exponential Random Variable
+## Exponential Random Variable
 
 The inverse transform sampling from a uniform distribution can be easily used to sample an exponential random variable. The CDF is
 
@@ -359,10 +359,10 @@ $$
 F^{-1}(y) = -\frac{\log(1-y)}{\lambda}\,.
 $$
 
-Thus, we can sample $U\sim U(0, 1)$, and then perform the transfomation
+Thus, we can sample $$U\sim U(0, 1)$$, and then perform the transfomation
 
 $$
--\frac{-\log U}{\lambda}\,.
+-\frac{\log U}{\lambda}\,.
 $$
 
 Today, I came across another method from [Xi'an's blog](https://xianblog.wordpress.com/2021/05/18/r-rexp/), which points to the question on [StackExchange](https://stats.stackexchange.com/a/522375).
