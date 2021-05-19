@@ -120,7 +120,7 @@ function AtkinsonPois(lambda)
         x > -0.5 && break
     end
     while true
-        # step 2: transform to N 
+        # step 2: transform to N
         N = floor(Int, x)
         u2 = rand()
         # step 3: accept or not
@@ -164,7 +164,7 @@ end
 
 ## example for simple poisson
 res2 = ones(Int, N);
-for i = 1:N 
+for i = 1:N
     res2[i] = SimplePois(10)
 end
 # ans: 5 7 16 7 10 .......
@@ -176,13 +176,13 @@ ARS is based on the construction of an envelope and the derivation of a correspo
 
 Let $${\cal S}_n$$ be a set of points $$x_i,i=0,1,\ldots,n+1$$, in the support of $$f$$ such that $$h(x_i)=\log f(x_i)$$ is known up to the same constant. Given the concavity of $$h$$, the line $$L_{i,i+1}$$ through $$(x_i,h(x_i))$$ and $$(x_{i+1},h(x_{i+1}))$$ is below the graph of $$h$$ in $$[x_i,x_{i+1}]$$ and is above this graph outside this interval.
 
-For $$x\in [x_i,x_{i+1}]$$, define 
+For $$x\in [x_i,x_{i+1}]$$, define
 
 $$
 \bar h_n(x)=\min\{L_{i-1,i}(x),L_{i+1,i+2}(x)\}\quad\text{and}\quad \underline h_n(x)=L_{i,i+1}(x)\,,
 $$
 
-the envelopes are 
+the envelopes are
 
 $$
 \underline h_n(x)\le h(x)\le \bar h_n(x)
@@ -196,7 +196,7 @@ $$
 
 ![](ars.png)
 
-[Davison (2008)](http://www.cambridge.org/hk/academic/subjects/statistics-probability/statistical-theory-and-methods/statistical-models) provides another version of ARS 
+[Davison (2008)](http://www.cambridge.org/hk/academic/subjects/statistics-probability/statistical-theory-and-methods/statistical-models) provides another version of ARS
 
 ![](ars-2.png)
 
@@ -214,14 +214,14 @@ $$
 \begin{aligned}
 	G_+(y) & = \int_{-\infty}^y \exp(h_+(x)) dx \\
 		   & = \int_{-\infty}^{\min\{z_1,y\}} \exp(h_+(x)) dx \\
-		   & \qquad + \int_{z_1}^{\min\{z_2,\max\{y, z_1\}\}} \exp(h_+(x)) dx \\ 
+		   & \qquad + \int_{z_1}^{\min\{z_2,\max\{y, z_1\}\}} \exp(h_+(x)) dx \\
 		   & \qquad + \cdots \\
 		   & \qquad + \int_{z_{k-1}}^{\min\{z_k,\max\{y, z_{k-1}\}\}} \exp(h_+(x)) dx \\
 		   & \qquad + \int_{z_k}^{\max\{z_k,y\}} \exp(h_+(x)) dx
 \end{aligned}
 $$
 
-and 
+and
 
 $$
 \int_{z_{j}}^{z_{j+1}}\exp(h_+(x))dx = \exp({h(y_{j+1})})\cdot \frac{1}{h'(y_{j+1})}\exp((y-y_{j+1})h'(y_{j+1}))\mid_{z_j}^{z_{j+1}},\; j=1,\ldots,k-1
@@ -344,3 +344,44 @@ end
 Based on the ARS algorithm, we can also get the Supplemental ARS algorithm:
 
 ![](s-ars.png)
+
+## Generate Exponential Random Variable
+
+The inverse transform sampling from a uniform distribution can be easily used to sample an exponential random variable. The CDF is
+
+$$
+F(x) = 1-\exp(-\lambda x)\,,
+$$
+
+whose inverse function is
+
+$$
+F^{-1}(y) = -\frac{\log(1-y)}{\lambda}\,.
+$$
+
+Thus, we can sample $U\sim U(0, 1)$, and then perform the transfomation
+
+$$
+-\frac{-\log U}{\lambda}\,.
+$$
+
+Today, I came across another method from [Xi'an's blog](https://xianblog.wordpress.com/2021/05/18/r-rexp/), which points to the question on [StackExchange](https://stats.stackexchange.com/a/522375).
+
+**Still confused about the details, as commented in the code.**
+
+The theoretical part is as follows,
+
+![](sexp.png)
+
+I rewrite the provided C code [in Julia](sexp.jl), and compare the distribution with samples from inverse CDF and the package `Distributions`
+
+```julia
+a = [exp_rand() for i=1:1000]
+b = [-log(rand()) for i=1:1000]
+c = rand(Exponential(1), 1000)
+histogram(a, bins=40, label = "sexp")
+histogram!(b, bins=40, alpha=0.5, label = "invF")
+histogram!(c, bins=40, alpha=0.5, label = "rand")
+```
+
+![](res_sexp.png)
